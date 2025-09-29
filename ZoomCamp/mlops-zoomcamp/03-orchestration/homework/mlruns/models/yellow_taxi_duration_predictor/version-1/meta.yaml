@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748692610459
+current_stage: None
+description: null
+last_updated_timestamp: 1748692610459
+name: yellow_taxi_duration_predictor
+run_id: 149a9b28242743a49b75fea8a617fb21
+run_link: null
+source: /Users/alexandru.huc/Downloads/Development/GitHub/mlops-zoomcamp/03-orchestration/homework/mlruns/0/149a9b28242743a49b75fea8a617fb21/artifacts/model
+status: READY
+status_message: null
+storage_location: /Users/alexandru.huc/Downloads/Development/GitHub/mlops-zoomcamp/03-orchestration/homework/mlruns/0/149a9b28242743a49b75fea8a617fb21/artifacts/model
+user_id: null
+version: 1

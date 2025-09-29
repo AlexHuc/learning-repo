@@ -1,0 +1,15 @@
+artifact_uri: /Users/alexandru.huc/Downloads/Development/GitHub/mlops-zoomcamp/03-orchestration/homework/mlruns/0/149a9b28242743a49b75fea8a617fb21/artifacts
+end_time: 1748692612381
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 149a9b28242743a49b75fea8a617fb21
+run_name: placid-carp-106
+run_uuid: 149a9b28242743a49b75fea8a617fb21
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748692607257
+status: 3
+tags: []
+user_id: alexandru.huc
