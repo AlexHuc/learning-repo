@@ -486,6 +486,8 @@ The goal is to make our **churn prediction model** accessible via the internet, 
 
 This lesson builds on the previous one, where we containerized the churn prediction service using Docker.
 
+![](./imgs/ml-5-7/1.png)
+
 ## 🏗️ From Local to Cloud Deployment
 Previously:
 - We built a Docker image containing our **Flask web service** and trained **ML model**.
