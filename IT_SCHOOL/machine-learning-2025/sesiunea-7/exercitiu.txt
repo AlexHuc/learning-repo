@@ -1,0 +1,10 @@
+Diamonds dataset path => https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv
+Penguins dataset path => https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
+Auto mpg (Cars) => https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mpg.csv
+Medical insurance => https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv
+
+1. Încarcă dataset-ul folosind read_csv() 
+2. Alege o valoare de target (ce vrei să prezici) și un feature (variabilă) care ne va ajuta să o prezicem 
+3. Aplică una din metodele învățate pentru modelul de linear regression ca să ajungi la rezultat (OLS, Gradient Descent)
+4. Plotează funcția pe grafic 
+5. Cum sunt rezultatele? Te așteptai sa arate așa? 
