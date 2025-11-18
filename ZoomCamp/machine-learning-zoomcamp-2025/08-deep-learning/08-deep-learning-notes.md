@@ -477,6 +477,11 @@ Checkpointing ensures:
 ## Overview
 This lesson explains how to enhance a pre-trained convolutional neural network by adding **extra dense layers** after the vector representation step. The goal is to increase model capacity and potentially improve accuracy for the image classification task.
 
+![](./imgs/ml-8-8/1.png)
+![](./imgs/ml-8-8/2.png)
+![](./imgs/ml-8-8/3.png)
+![](./imgs/ml-8-8/4.png)
+
 ## Base Model Recap
 - The model uses a **pre-trained ImageNet CNN** with `include_top=False`.
 - The convolutional base outputs a **vector representation** of images.
@@ -534,4 +539,293 @@ Other activations discussed:
 
 ---
 
-# 8.9 https://www.facebook.com/stories/1614571798619375/UzpfSVNDOjI1MDU5NTk0NTE3MDI0NDY0/?bucket_count=9&source=story_tray
+# ML Zoomcamp 8.9 - Regularization and Dropout
+
+## 🎯 Why Regularization?
+Neural networks can **overfit** by learning patterns that don’t generalize — for example, associating a **logo** on a t-shirt as the deciding factor for classification.  
+Regularization methods help the model **focus on true features** (e.g., shape, sleeves, color) rather than irrelevant details.
+
+![](./imgs/ml-8-9/1.png)
+![](./imgs/ml-8-9/2.png)
+![](./imgs/ml-8-9/3.png)
+![](./imgs/ml-8-9/4.png)
+![](./imgs/ml-8-9/5.png)
+![](./imgs/ml-8-9/6.png)
+![](./imgs/ml-8-9/7.png)
+![](./imgs/ml-8-9/8.png)
+
+## 🔍 The Problem
+- During training, the network sees the same image multiple times (per epoch).
+- It may latch onto **spurious correlations**, like always predicting "t-shirt" when a specific logo appears.
+- Such shortcuts fail on new data (e.g., a hoodie or hat with the logo).
+
+## 🛠️ Dropout: The Solution
+**Dropout randomly disables (freezes) parts of the network during training.**
+
+### How it works:
+- For each training step, a **percentage of neurons** in a layer are turned off.
+- This means:
+  - Some features (like logo-related neurons) are hidden.
+  - The model must learn **multiple redundant representations**, improving generalization.
+- At every iteration:
+  - A *different subset* of neurons is dropped.
+  - This simulates seeing a slightly different version of the input.
+
+### Effect:
+- The network can’t rely on overly specific details.
+- It is forced to understand the **overall structure** of the object.
+
+## 🧱 Dropout in the Model Architecture
+- Applied after a dense (inner) layer.
+- Controlled by a **drop rate**:
+  - `0.0` → no dropout  
+  - `0.2` → drop 20% of neurons  
+  - `0.5` → drop half  
+  - `0.8` → very aggressive (generally too strong)
+
+Dropout **does not change the output size**; it only masks neurons temporarily.
+
+## 📊 Experiment Results
+Multiple models were trained with drop rates: **0.0, 0.2, 0.8**.
+
+### Key findings:
+- **0.8**: Too much dropout; unstable and often lucky spikes.
+- **0.0**: High training accuracy but clear overfitting.
+- **0.2**: Best balance.
+  - Good validation accuracy.
+  - Lower overfitting.
+  - Most stable behavior across epochs.
+
+### Conclusion:
+➡️ **Drop rate of 0.2** is recommended for this task.
+
+## 📝 Final Takeaways
+- Dropout is a powerful regularization technique that:
+  - Prevents over-reliance on specific neurons.
+  - Reduces overfitting.
+  - Encourages learning more general and robust features.
+- Best results in the experiment were obtained with **moderate dropout (0.2)**.
+- Next: other regularization techniques, including **data augmentation**, to further improve generalization.
+
+---
+
+# ML Zoomcamp 8.10 - Data Augmentation
+
+This lesson explains **data augmentation**—a technique for generating additional training examples from existing images to improve model generalization and reduce overfitting.
+
+![](./imgs/ml-8-10/1.png)
+![](./imgs/ml-8-10/2.png)
+![](./imgs/ml-8-10/3.png)
+![](./imgs/ml-8-10/4.png)
+![](./imgs/ml-8-10/5.png)
+![](./imgs/ml-8-10/6.png)
+![](./imgs/ml-8-10/7.png)
+
+## 🧠 Why Augmentation?
+- Neural networks can overfit if they repeatedly see the **exact same image**.
+- Dropout helps, but augmentations provide more **varied input**.
+- Augmentations simulate real-world variations (position, orientation, lighting).
+
+## 🔄 Common Image Transformations
+
+### 1. **Flipping**
+- **Horizontal** and **vertical** flips.
+- Useful when flipped objects still make sense (e.g., symmetric clothing).
+- For some datasets (e.g., oriented t-shirts), certain flips may *not* be meaningful.
+
+### 2. **Rotation**
+- Rotate images by random degrees (e.g., −30° to +30°).
+- Keras fills missing corners based on nearby pixels.
+- Good when objects in real data are not perfectly aligned.
+
+### 3. **Shifting (Translation)**
+- Move the image slightly **up/down** or **left/right**.
+- Helps when objects are not always centered.
+- Defined as a percentage of image width/height.
+
+### 4. **Shearing**
+- Tilts the image by pulling one side up/down.
+- Produces a slanted version of the original shape.
+- Different from rotation—more like skewing.
+
+### 5. **Zooming**
+- **Zoom in**: crop into the object.
+- **Zoom out**: shrink the object and fill surroundings.
+- Can zoom along one axis (x or y) or both.
+
+### 6. **Brightness / Contrast Adjustments**
+- Modify image lighting to simulate different photo conditions.
+
+### 7. **Random Erasing (Black Patch)**
+- Place a random black box over part of the image.
+- Forces the model to learn from multiple features, not one spot.
+
+## 🔧 Combining Transformations
+- Augmentations can be **stacked**: rotate + shear + shift, etc.
+- Creates more realistic diversity.
+- Keras `ImageDataGenerator` supports:
+  - `rotation_range`
+  - `width_shift_range`
+  - `height_shift_range`
+  - `shear_range`
+  - `zoom_range`
+  - `horizontal_flip`, `vertical_flip`
+  - and more.
+
+## 🎛 Choosing Which Augmentations to Use
+
+### ✔ Use domain knowledge
+- Does flipping make sense?
+- Are objects symmetrical?
+- Do real images include rotations or shifts?
+
+### ✔ Inspect your dataset
+- Are objects centered?
+- Are they rotated slightly?
+
+### ✔ Treat augmentation as a hyperparameter
+- Try with and without each augmentation.
+- Train for several epochs (e.g., 10–20).
+- Keep what improves validation performance.
+
+## 🏁 Key Takeaways
+- Augmentation increases dataset variety without collecting new images.
+- Helps prevent overfitting and makes models more robust.
+- Requires thoughtful selection based on the data and real-world expectations.
+
+---
+
+# ML Zoomcamp 8.11 - Training a Larger Model
+
+In this lesson, the focus shifts from experimenting with **small neural network models** to training a **larger, more powerful model**. The instructor explains the motivation, adjustments, challenges, and results when scaling up image classification models.
+
+## 🚀 Why Train a Larger Model?
+- Small models train **4× faster**, useful for rapid experimentation.
+- After validating ideas (dropout, extra dense layers, etc.), it's time to scale up.
+- Larger models use **bigger input images** and have more parameters, improving accuracy but increasing training time.
+
+## 🛠 Key Modifications for the Larger Model
+### **1. Increased Input Size**
+- Input image size changed from **150×150** to **299×299**.
+- Code updated to use the new input size across:
+  - Image loading  
+  - Model definition  
+  - Preprocessing steps  
+
+**Impact:**  
+- Training becomes 4× slower.  
+- Accuracy improves immediately in early epochs.
+
+### **2. Checkpointing Enabled**
+- A checkpoint mechanism is added to ensure the **best version** of the model is saved.
+- Versioning approach:
+  - **v1**: simple transfer learning  
+  - **v2**: added dense layer  
+  - **v3**: added dropout  
+  - **v4**: large input model (+ experiments with augmentation)
+
+## 🎛 Augmentation Decisions
+- Initial run: **no augmentation** (to observe baseline behavior).
+- Problem observed:  
+  - **Training accuracy increases rapidly**, but validation accuracy fluctuates.
+  - Indicates **overfitting**.
+
+### Reintroduced augmentations:
+- Width/height shifts  
+- Zoom  
+- Horizontal flips  
+
+**Result:**  
+- Training accuracy grows *slower*.  
+- Validation accuracy stabilizes.  
+- Reduced discrepancy between training and validation.
+
+## 📉 Tuning Learning Rate
+- Validation accuracy was “jumpy.”  
+- Solution: **reduce learning rate** for smoother convergence.
+- At lower learning rate, validation accuracy improved and became more reliable.
+
+## 📈 Observed Model Performance
+- Early runs: ~85–89% accuracy  
+- Best stable configurations with augmentation:
+  - ~90% validation accuracy  
+  - Training accuracy ~92%  
+- Smaller gap between training and validation → **less overfitting**
+- Augmentation helps because the model never sees the same image twice.
+
+## 🧾 Final Notes Before Moving On
+- The best model checkpoint is saved (v4.1).
+- Training could continue longer but returns diminish.
+- Next lesson will:
+  - Load this saved model  
+  - Apply it to new images  
+  - Evaluate performance on the **test dataset**
+
+## ✔ Key Takeaways
+- Larger models require **larger inputs** and run **much slower**.
+- **Checkpointing is essential** when experimenting to avoid losing the best model.
+- **Augmentation** and **lower learning rates** are effective at reducing overfitting.
+- Validation accuracy is a better indicator of true performance than training accuracy.
+
+---
+
+# ML Zoomcamp 8.12 - Using the Model
+
+In this lesson, we take the **final trained model** from the previous session and learn how to **load it, evaluate it on the test set, and use it for making predictions on new images**.
+
+## 🔧 1. Loading the Trained Model
+- The model was previously trained with:
+  - Input size **299×299**
+  - Learning rate **0.005**
+  - Inner dense layer size **100**
+  - Dropout rate **20%**
+  - Data augmentation
+- It reached **~90% validation accuracy** and was saved via a checkpoint.
+- In this lesson, we simulate starting fresh and **load the saved model** from disk.
+
+## 🧪 2. Preparing the Test Dataset
+- The test set is loaded using the **same preprocessing pipeline** as validation.
+- Total images: ~400 across 10 classes.
+- Ensuring identical preprocessing is crucial for correct evaluation.
+
+## 📊 3. Evaluating the Model
+- The model is evaluated using `model.evaluate()`.
+- Output:
+  - **Loss** (categorical cross-entropy)
+  - **Accuracy**
+- Test accuracy is **~90%**, nearly identical to validation accuracy.
+- This indicates the model **generalizes well** and did **not overfit**.
+
+## 🔍 4. Loading and Inspecting an Image
+- A sample image (e.g., *pants*) is loaded from the test data.
+- Image is resized to **299×299**.
+- Converted to NumPy format and expanded to shape `(1, height, width, channels)`.
+- Preprocessing is applied using the model’s original preprocessing function.
+
+## 🤖 5. Making Predictions
+- The model outputs a vector of **logits** (raw scores for each class).
+- Using class labels, the prediction scores are paired with class names.
+- Example:
+  - Highest score → **pants**
+  - Second highest → **shorts**
+- These logits can be treated as relative likelihoods.
+- If probabilities are needed, apply **softmax** (not required here).
+
+## 📝 6. Key Takeaways
+- You can **load a saved neural network** and use it anytime without retraining.
+- Test accuracy confirms the model's stability and good performance.
+- Predictions require:
+  1. Loading & resizing the image  
+  2. Converting to array and preprocessing  
+  3. Feeding into the model  
+  4. Mapping predictions to class labels  
+- The model successfully classified the example image as **pants**.
+
+## 🎯 Final Result
+You now know how to:
+- Load the trained model  
+- Evaluate it on unseen test data  
+- Use it to classify new images  
+- Interpret raw outputs (logits) and map them to classes  
+
+This completes the practical workflow of **training → saving → evaluating → predicting**.
