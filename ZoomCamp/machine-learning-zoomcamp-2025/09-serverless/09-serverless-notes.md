@@ -150,6 +150,9 @@ Note that `AWS Lambda` offers a free tier that includes a certain number of free
 
 # ML Zoomcamp 9.3 - TensorFlow Lite
 
+![](./imgs/ml-9-3/1.png)
+![](./imgs/ml-9-3/2.png)
+
 ## 1. Why TensorFlow Lite?
 TensorFlow is a very large library (~1.7GB unpacked). Large model packages have drawbacks:
 - Slow cold starts in serverless environments (e.g., AWS Lambda).
