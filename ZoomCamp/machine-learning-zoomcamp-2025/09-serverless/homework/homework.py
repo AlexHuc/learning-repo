@@ -161,21 +161,3 @@ print("Probability of positive class:", prob)
 # * The image already contains a model and it's not the same model
 #   as the one we used for questions 1-4.
 
-def predict_from_url(url, model_path="hair_classifier_empty.onnx"):
-    img = download_image(url)
-    img_prepared = prepare_image(img, target_size=(200, 200))
-
-    x = np.array(img_prepared).astype("float32") / 255
-    mean = np.array([0.485, 0.456, 0.406])
-    std = np.array([0.229, 0.224, 0.225])
-    x_norm = (x - mean) / std
-
-    x_input = np.transpose(x_norm, (2, 0, 1))[None, :, :, :]
-
-    sess = ort.InferenceSession(model_path)
-    input_name = sess.get_inputs()[0].name
-    output_name = sess.get_outputs()[0].name
-    pred = sess.run([output_name], {input_name: x_input})[0]
-
-    return float(pred[0][0])
-
