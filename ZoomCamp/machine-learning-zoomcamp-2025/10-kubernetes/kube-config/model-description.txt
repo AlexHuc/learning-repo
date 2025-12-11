@@ -1,0 +1,56 @@
+-- Made the model available for our local kuberneties (run from the root of lesson 10)
+kind load docker-image zoomcamp-10-model:xception_v4_001
+
+-- Apply the model-deployment.yaml to the cluster
+kubectl apply -f model-deployment.yaml
+# kubectl delete -f model-deployment.yaml
+
+-- Check the pod
+kubectl get pod
+kubectl describe pod tf-serving-clothing-model-bf95d7899-k7klv
+
+-- Forward the port of the tf cluster
+kubectl port-forward tf-serving-clothing-model-bf95d7899-k7klv 8500:8500
+
+-- Apply the model-service.yaml to the cluster
+kubectl apply -f model-service.yaml
+
+-- Forward the port of the tf cluster
+kubectl port-forward service/tf-serving-clothing-model 8500:8500
+
+-- Load the image for the gateway-deployment.yaml (run from the root of lesson 10)
+kind load docker-image zoomcamp-10-gateway:002
+
+-- Log insite in one of the pods
+kubectl exec -it ping-deployment-5754b77896-vwf5c -- bash
+
+-- From inside one pod I want to access another one
+apt update
+apt install curl
+curl localhost:9696/ping
+
+-- From inside the pod i want to acess the service
+curl ping.default.svc.cluster.local/ping
+
+-- From inside the pod i want to acess the tf service
+# curl tf-serving-clothing-model.default.svc.cluster.local:8500 --> This will not work
+apt install telnet
+telnet tf-serving-clothing-model.default.svc.cluster.local 8500
+
+-- Apply the gateway-deployment.yaml to the cluster
+kubectl apply -f gateway-deployment.yaml
+
+-- Forward the ping pod
+kubectl port-forward ping-deployment-5754b77896-vwf5c 8500:8500
+
+-- Debug
+kubectl logs gateway-5ddd75f4ff-rjbs4
+
+-- Forward the gateway-deployment pod
+kubectl port-forward gateway-5ddd75f4ff-rjbs4 9696:9696
+
+-- Apply the gateway-service.yaml to the cluster
+kubectl apply -f gateway-service.yaml
+
+-- Forward the gateway-services pod
+kubectl port-forward service/gateway 8080:80

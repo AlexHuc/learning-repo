@@ -1,0 +1,64 @@
+-- Build the docker image
+docker build -t ping:v001 .
+
+-- Run the docker image
+docker run -it --rm -p 9696:9696 ping:v001
+
+-- Do a curl request for testing
+curl localhost:9696/ping
+
+-- Installed kubectl aws
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.26.15/2024-12-12/bin/linux/amd64/kubectl
+chmod +x kubectl
+
+-- Installed kind from kuberneties
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+kind version
+
+-- Create kind cluster
+kind create cluster
+
+-- Use your cluster
+kubectl cluster-info --context kind-kind
+
+-- List all the serivces that are running
+kubectl get service
+
+-- List all the pods that are running
+kubectl get pod
+
+-- List all the deployments that are running
+kubectl get deployment
+
+-- Create the deployment.yaml
+-- Apply deployment to cluster
+kubectl apply -f deployment.yaml
+
+-- Get details about a pod
+kubectl describe pod ping-deployment-5754b77896-6hqqt
+kubectl describe pod ping-deployment-5754b77896-6hqqt | less
+
+-- Loading an image into the cluster
+kind load docker-image ping:v001
+
+-- Forward the  of the pot to localhost
+kubectl port-forward ping-deployment-5754b77896-6hqqt 9696:9696
+
+-- Test the for the forwarded port
+curl localhost:9696/ping
+
+-- Create the service.yaml
+-- Apply service to cluster
+kubectl apply -f service.yaml
+
+-- List all the serivce that are running
+kubectl get service
+kubectl get svc
+
+-- Forward the  of the service to localhost
+kubectl port-forward service/ping 8080:80
+
+-- Test the for the forwarded port
+curl localhost:8080/ping
