@@ -1,0 +1,446 @@
+## Projects 
+
+The idea is that you now apply everything we learned so far yourself.
+
+There are three projects in this course:
+
+* Midterm project
+* Capstone 1
+* Capstone 2
+
+This is what you need to do for each project
+
+* Think of a problem that's interesting for you and find a dataset for that
+* Describe this problem and explain how a model could be used
+* Prepare the data and doing EDA, analyze important features
+* Train multiple models, tune their performance and select the best model
+* Export the notebook into a script
+* Put your model into a web service and deploy it locally with Docker
+* Bonus points for deploying the service to the cloud
+
+## Videos
+
+[Submit and evaluate Zoomcamp projects 🎥](https://www.loom.com/share/4f5c155c550e48ddb54b71ba76516b04)
+
+We did a few office hours sessions where we explained how you go about the projects. 
+
+Check them out:
+
+* [ML Zoomcamp 2023 Office Hours (pre-midterm)](https://www.youtube.com/live/GuJkBzyGxyc)
+* [ML Zoomcamp 2022 - Office Hours (midterm project)](https://www.youtube.com/live/AcB-Iz8h5tc)
+* [2021 Office hours #7](https://www.youtube.com/live/wWBm6MHu5u8) and [2021 Office hours #8](https://www.youtube.com/live/3bo7I9LaN7o) (check #8 if you want to use text)
+
+## Deliverables
+
+# ML Zoomcamp Project Evaluation Criteria
+
+The project will be evaluated using these criteria:
+
+- **Problem description**
+  - [ ] 0 points: Problem is not described
+  - [ ] 1 point: Problem is described in README briefly without much details
+  - [ ] 2 points: Problem is described in README with enough context, so it's clear what the problem is and how the solution will be used
+
+- **EDA**
+  - [ ] 0 points: No EDA
+  - [ ] 1 point: Basic EDA (looking at min-max values, checking for missing values)
+  - [ ] 2 points: Extensive EDA (ranges of values, missing values, analysis of target variable, feature importance analysis). For images: analyzing the content of the images. For texts: frequent words, word clouds, etc.
+
+- **Model training**
+  - [ ] 0 points: No model training
+  - [ ] 1 point: Trained only one model, no parameter tuning
+  - [ ] 2 points: Trained multiple models (linear and tree-based). For neural networks: tried multiple variations - with dropout or without, with extra inner layers or without
+  - [ ] 3 points: Trained multiple models and tuned their parameters. For neural networks: same as previous, but also with tuning: adjusting learning rate, dropout rate, size of the inner layer, etc.
+
+- **Exporting notebook to script**
+  - [ ] 0 points: No script for training a model
+  - [ ] 1 point: The logic for training the model is exported to a separate script
+
+- **Reproducibility**
+  - [ ] 0 points: Not possible to execute the notebook and the training script. Data is missing or it's not easily accessible
+  - [ ] 1 point: It's possible to re-execute the notebook and the training script without errors. The dataset is committed in the project repository or there are clear instructions on how to download the data
+
+- **Model deployment**
+  - [ ] 0 points: Model is not deployed
+  - [ ] 1 point: Model is deployed (with Flask, BentoML, or a similar framework)
+
+- **Dependency and environment management**
+  - [ ] 0 points: No dependency management
+  - [ ] 1 point: Provided a file with dependencies (requirements.txt, pipfile, bentofile.yaml with dependencies, etc)
+  - [ ] 2 points: Provided a file with dependencies and used a virtual environment. README says how to install the dependencies and how to activate the env
+
+- **Containerization**
+  - [ ] 0 points: No containerization
+  - [ ] 1 point: Dockerfile is provided or a tool that creates a docker image is used (e.g., BentoML)
+  - [ ] 2 points: The application is containerized and the README describes how to build a container and how to run it
+
+- **Cloud deployment**
+  - [ ] 0 points: No deployment to the cloud
+  - [ ] 1 point: Docs describe clearly (with code) how to deploy the service to the cloud or Kubernetes cluster (local or remote)
+  - [ ] 2 points: There's code for deployment to cloud or Kubernetes cluster (local or remote). There's a URL for testing - or video/screenshot of testing it
+
+**Total points:** 16
+
+
+## Peer reviewing
+
+> [!IMPORTANT]  
+> To evaluate the projects, we'll use peer reviewing. This is a great opportunity for you to learn from each other.
+> * To get points for your project, you need to evaluate 3 projects of your peers
+> * You get 3 extra points for each evaluation
+> * If you don't evaluate your peers, you fail the project
+
+Tip: you can use https://nbviewer.org/ to render notebooks if GitHub doesn't work
+
+
+## Evaluation Criteria
+
+The project will be evaluated using these criteria:
+* Problem description
+    * 0 points: Problem is not described
+    * 1 point: Problem is described in README birefly without much details
+    * 2 points: Problem is described in README with enough context, so it's clear what the problem is and how the solution
+will be used
+* EDA
+    * 0 points: No EDA
+    * 1 point: Basic EDA (looking at min-max values, checking for missing values)
+    * 2 points: Extensive EDA (ranges of values, missing values, analysis of target variable, feature importance analysis)
+      For images: analyzing the content of the images.
+      For texts: frequent words, word clouds, etc
+* Model training
+    * 0 points: No model training
+    * 1 point: Trained only one model, no parameter tuning
+    * 2 points: Trained multiple models (linear and tree-based).
+      For neural networks: tried multiple variations - with dropout or without, with extra inner layers or without 
+    * 3 points: Trained multiple models and tuned their parameters.
+      For neural networks: same as previous, but also with tuning: adjusting learning rate, dropout rate, size of the inner layer, etc.
+* Exporting notebook to script
+    * 0 points: No script for training a model
+    * 1 point: The logic for training the model is exported to a separate script
+* Reproducibility
+    * 0 points: Not possitble to execute the notebook and the training script. Data is missing or it's not easiliy accessible
+    * 1 point: It's possible to re-execute the notebook and the training script without errors. The dataset is committed in the project repository or there are clear instructions on how to download the data
+* Model deployment
+    * 0 points: Model is not deployed
+    * 1 point: Model is deployed (with Flask, BentoML or a similar framework)
+* Dependency and enviroment management
+    * 0 points: No dependency management
+    * 1 point: Provided a file with dependencies (requirements.txt, pipfile, bentofile.yaml with dependencies, etc)
+    * 2 points: Provided a file with dependencies and used virtual environment. README says how to install the dependencies and how to
+activate the env
+* Containerization
+    * 0 points: No containerization
+    * 1 point: Dockerfile is provided or a tool that creates a docker image is used (e.g. BentoML)
+    * 2 points: The application is containerized and the README describes how to build a container and how to run it
+* Cloud deployment
+    * 0 points: No deployment to the cloud
+    * 1 point: Docs describe clearly (with code) how to deploy the service to cloud or kubernetes cluster (local or remote)
+    * 2 points: There's code for deployment to cloud or kubernetes cluster (local or remote). There's a URL for testing - or video/screenshot of testing it
+
+Total max 16 points
+
+Or the same in table format [Criteria](https://docs.google.com/spreadsheets/d/e/2PACX-1vQCwqAtkjl07MTW-SxWUK9GUvMQ3Pv_fF8UadcuIYLgHa0PlNu9BRWtfLgivI8xSCncQs82HDwGXSm3/pubhtml)
+
+
+## Cheating and plagiarism
+
+Plagiarism in any form is not allowed. Examples of plagiarism:
+
+* Taking somebody's else notebooks and projects (in full or partly) and using it for the capstone project
+* Re-using your own projects (in full or partly) from other courses and bootcamps
+* Re-using your midterm project from ML Zoomcamp in capstone
+* Re-using your ML Zoomcamp from previous iterations of the course
+
+Violating any of this will result in 0 points for this project.
+
+## FAQ
+
+
+**Q**: Can I use poetry / virtual env for managing dependencies; catboost for boosting and FastAPI for creating a web service?
+
+> Yes, you can use any library you want. But please make sure to document everything and clearly explain what you use.
+> Think of your peers who will review it - they don't necessarily know what these libraries are. 
+> Please give them enough context to understand your project.
+
+**Q**: Can multiple people use the same dataset?
+
+> Yes, there's no way to control it or enforce. So it's totally okay if you and somebody else use the same dataset. 
+
+**Q**: For peer reviewing, do I have to run the code and make sure it works?
+
+> It's recommended that you do that, but you don't _have_ to do it.
+
+**Q**: What if I see an error? What if I run something and it doesn't work?
+
+> If you spot an error somewhere and you see that the code clearly doesn't work, then you
+> give 0 points to the respective criterium. E.g. if you see an error in Dockerfile,
+> then you give 0 points to the "containerization" dimension.
+
+**Q**: Should I include a project title, and what happens if I leave the README file empty?
+
+> It's highly recommended to create a new repository for your project (not inside an existing repo) with a meaningful title, such as
+> "Car Price Prediction" or "Heart Risk Prediction" and including as many details as possible in the README file. ChatGPT can assist you with this. Doing so will not only make it easier to showcase your project for potential job opportunities but also have it featured on the [Projects Gallery App](#projects-gallery).
+> If you leave the README file empty or with minimal details, there may be point deductions as per the [Evaluation Criteria](#evaluation-criteria).
+
+## Resources
+
+### Datasets
+
+* [A list with datasets from our Data Engineering course](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/projects/datasets.md)
+* [kaggle Datasets](https://www.kaggle.com/datasets) and [kaggle Competitions](https://www.kaggle.com/competitions)
+* [Tensorflow Datasets](https://www.tensorflow.org/datasets/catalog/overview)
+* [PyTorch - Image Datasets, Text Datasets, and Audio Datasets](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html) links in first paragraph
+* [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+* [OpenML Datasets](https://www.openml.org/search?type=data)
+* [OECD database](https://stats.oecd.org/index.aspx?lang=en)
+* [European data](https://data.europa.eu/en)
+* [Urban Data Platform Hamburg](https://www.en.urbandataplatform.hamburg/find-data)
+* [New Zealand Data Sets](https://newzealand.ai/public-data-sets)
+* [Open Images Dataset V7 and Extensions](https://storage.googleapis.com/openimages/web/index.html)
+* [deeplake - Machine Learning Datasets](https://datasets.activeloop.ai/docs/ml/datasets/)
+* [Soccer data](https://github.com/statsbomb/open-data)
+* Add more data here!
+
+### Projects Gallery
+
+Explore a collection of projects completed by members of our community. The projects cover a wide range of topics and utilize different tools and techniques. Feel free to delve into any project and see how others have tackled real-world problems with data, structured their code, and presented their findings. It's a great resource to learn and get ideas for your own projects.
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://datatalksclub-projects.streamlit.app/)
+
+### Zoomcamp 2024
+
+* [Midterm project](../cohorts/2024/projects.md#midterm-project)
+* [Capstone 1](../cohorts/2024/projects.md#capstone-1)
+* [Capstone 2](../cohorts/2024/projects.md#capstone-2)
+
+### Zoomcamp 2023
+
+* [Midterm project](../cohorts/2023/projects.md#midterm-project)
+* [Capstone 1](../cohorts/2023/projects.md#capstone-1)
+* [Capstone 2](../cohorts/2023/projects.md#capstone-2)
+
+
+### Zoomcamp 2022
+
+* [Midterm project](../cohorts/2022/projects.md#midterm-project)
+* [Capstone 1](../cohorts/2022/projects.md#capstone-1)
+* [Capstone 2](../cohorts/2022/projects.md#capstone-2)
+
+
+### Zoomcamp 2021
+
+* [Midterm project](../cohorts/2021/07-midterm-project/)
+* [Capstone 1](../cohorts/2021/12-capstone/)
+* [Capstone 2](../cohorts/2021/14-project/)
+
+# How to Submit and Review Projects
+
+This guide is based on [Alexey's video guide](https://www.loom.com/share/4f5c155c550e48ddb54b71ba76516b04). You can watch it for a visual guide.
+
+## Submitting Your Project
+
+1. Go to your course page on the course platform: https://courses.datatalks.club/
+2. Open the **project submission form**.
+3. Prepare your materials:
+
+   * **GitHub repo URL** (you can use a separate repo or a subfolder in your course repo).
+   * **Commit ID** of your final project version.
+   * (Optional) Up to **14 “learning in public” links** — posts where you shared your progress.
+   * (Optional) Link to your **FAQ contribution**, if any.
+4. Review your **certificate name** — it will appear exactly as entered.
+You can edit it under *Enrollment Details → Name on certificate*.
+
+5. Submit the form.
+
+Even after the deadline, you can still submit while the form remains open (it may be closed manually anytime).
+
+## Reviewing Peer Projects
+Once the form closes, you’ll automatically receive **3 peer review assignments**.
+
+Each assignment includes a GitHub project link and a specific **commit hash** to review.
+
+Peer review is part of your learning. Take time to explore how others approached their projects.
+
+### How to review your peers?
+1. Open each assigned project on GitHub (To check the correct version, use the commit link (`/commit/<commit_id>`))
+2. Evaluate the project using the official **criteria** (problem description, reproducibility, deployment, etc.).
+3. For each criterion, assign points based on completeness and quality.
+4. (Optional but recommended) Try to **run the project locally** to verify reproducibility. (If the dataset is private or the cloud setup is inaccessible, judge reproducibility based on the documentation.)
+5. Leave short, constructive **feedback** — what worked well and what could be improved.
+6. Submit your review and record the **time spent**.
+7. (Optional) Review extra projects for additional learning.
+
+Notes:
+
+* If you get a clearly fake or placeholder project (as shown in the demo), give **zero points**.
+* Focus on **effort, completeness, and documentation**, not model accuracy.
+
+# Project Tips and Checklist
+
+This guide summarizes best practices for your midterm and capstone projects.
+
+It's based on Alexey's project discussion video: https://www.youtube.com/live/GuJkBzyGxyc?si=xdgNWXemt-1U_Sph
+
+## 1. Choosing Your Problem & Dataset
+
+- **Pick something you actually find interesting.**  
+A relatable problem keeps you motivated through debugging and deployment.
+
+- **Keep scope realistic.**  
+If a Kaggle notebook already solves a similar task, it's likely doable in 2 weeks.
+
+- **Dataset sanity checks**
+  - Publicly available and easy to download
+  - Not too small (< 500 rows) or too big (> 1 GB)
+  - Clear target variable
+  - Reasonable amount of missing data (you'll handle it in preprocessing)
+
+> *Tip:* Start by browsing past cohort projects for inspiration.
+
+## 2. Problem Framing
+
+- Clearly **describe the problem** in the README: what you're predicting, who benefits, and how the model will be used.
+- Define an **evaluation metric** appropriate to your task:
+  - Balanced classification → Accuracy or AUC-ROC
+  - Imbalanced classification → Precision, Recall, or PR Curve
+  - Regression → RMSE / MAE
+- Add a short note on **why this problem matters**.
+
+## 3. Data Preparation & EDA
+
+- Document data source and retrieval steps.
+- Explore distributions, missing values, correlations, outliers.
+- Feature-engineer only what's necessary — keep it interpretable.
+- Keep preprocessing steps **reproducible** (functions or scripts).
+
+## 4. Modeling
+
+- Start with a **baseline** (Logistic/Linear model or shallow tree).  
+- Train at least **3 models**, tune key hyperparameters, and select the best.  
+- Use **cross-validation** and keep a summary table of scores.
+- Avoid data leakage — don't include target-derived features.
+
+## 5. From Notebook → Script
+
+Refactor your final notebook into:
+```
+
+train.py      # trains model and saves artifact
+predict.py    # loads model, runs inference
+serve.py      # starts web service
+```
+
+## 6. Web Service
+
+- Implement a **Flask/FastAPI** (or similar) app exposing:
+  - `POST /predict` – accepts JSON input, returns prediction
+  - `GET /health` – simple 200 OK check
+- Provide an example request in the README:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" \
+       -d '{"feature1": 3.2, "feature2": "A"}' \
+       http://localhost:9696/predict
+
+## 7. Dockerization
+
+✅ Required for the project evaluation.
+Include a working `Dockerfile`, e.g.:
+
+```dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+EXPOSE 9696
+CMD ["python", "serve.py"]
+```
+
+Add build/run instructions:
+
+```bash
+docker build -t myproject .
+docker run -it -p 9696:9696 myproject
+```
+
+## 8. (Bonus) Cloud Deployment
+
+Optional but earns extra points:
+
+* Deploy to AWS, GCP, Azure, or PythonAnywhere.
+* Include:
+
+  * Access instructions or screenshots
+  * A short demo of successful prediction
+  * Teardown info to avoid extra costs
+
+## 9. Documentation & Structure
+
+A good README includes:
+
+1. Problem statement
+2. Dataset description
+3. EDA summary
+4. Modeling approach & metrics
+5. How to run locally and via Docker
+6. API usage example
+7. Known limitations / next steps
+
+Add one simple **diagram or architecture sketch** (data → model → API) if possible.
+
+## 10. Peer Review Readiness
+
+Before submission:
+
+* Clone your repo fresh and ensure everything runs from scratch.
+* Tag or note the **exact commit hash** you'll submit.
+* Check that all files needed for reproducibility are included.
+* Write clear setup and run instructions — reviewers should need <10 minutes to verify.
+
+## 11. Learning in Public
+
+Share short updates during your build — screenshots, threads, or LinkedIn posts.
+You can add up to **14 public learning links** in the submission form.
+
+## 12. Common Pitfalls to Avoid
+
+🚫 Don't skip peer review — fewer than 3 reviews → project fail
+🚫 Don't replace Flask/FastAPI + Docker with Gradio/Streamlit (they're great extras, not substitutes)
+🚫 Don't copy-paste other students' projects — inspiration ≠ duplication
+🚫 Don't leave Docker setup or deployment for the last day
+
+## 13. Time & Effort
+
+Plan for **15–20 hours** total:
+
+* 5h exploring & EDA
+* 5h modeling & tuning
+* 3h refactoring + testing
+* 5h packaging & deployment
+* 2h documentation & peer review prep
+
+## 14. Evaluation Criteria Summary
+
+| Category                      | Max Points | Key Expectation                            |
+| -- | - |  |
+| Problem description & clarity | 2          | Clear, contextual README                   |
+| EDA & feature prep            | 2          | Well-explained and clean                   |
+| Modeling & tuning             | 2          | Several models + selection rationale       |
+| Reproducibility               | 2          | Runs end-to-end with provided instructions |
+| Deployment                    | 2          | Functional web service with Docker         |
+| Learning in public            | +up to 14  | Optional daily posts                       |
+| Bonus                         | +2         | Cloud deployment or notable improvement    |
+
+## 15. Quick Pre-Submission Checklist
+
+* [ ] Problem clearly stated
+* [ ] Dataset linked and documented
+* [ ] Notebook → script conversion complete
+* [ ] Web service works locally
+* [ ] Docker container builds & runs
+* [ ] README explains setup + API
+* [ ] Commit hash noted
+* [ ] Peer-review criteria covered
+* [ ] Project tested from fresh clone
+
+Good luck, and remember:
+**Deployment takes longer than expected — start early!**
