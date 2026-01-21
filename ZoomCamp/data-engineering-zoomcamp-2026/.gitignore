@@ -1,1 +1,8 @@
+# Python environment
 /de_venv
+
+# Parquet files
+*.parquet
+
+# System files
+.DS_Store
