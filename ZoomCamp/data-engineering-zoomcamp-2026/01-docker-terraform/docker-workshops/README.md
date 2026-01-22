@@ -1582,7 +1582,3 @@ End of SQL Refresher Documentation
 
 ![](./imgs/1.png)
 ![](./imgs/2.png)
-
----
-
-# DE Zoomcamp 1.3.1 - Terraform Primer
