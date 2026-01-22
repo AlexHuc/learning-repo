@@ -1243,3 +1243,346 @@ rm -rf .venv
 --- 
 
 That's all for today. Happy learning! 🐳📊
+
+# SQL Refresher Documentation
+
+```
+## Overview
+
+This document is a practical SQL refresher focused on analytics-style queries commonly used in data engineering, data analysis, and machine learning workflows.
+
+SQL is one of the most important skills in data-related roles because most real-world work involves querying, aggregating, and joining structured data.
+
+---
+
+## Why SQL Matters
+
+Most analytical queries follow the same structure:
+
+- read data from tables
+- join multiple datasets
+- aggregate metrics
+- analyze patterns
+
+According to practical experience, **GROUP BY and JOIN are the two most important SQL concepts**.
+
+---
+
+## Dataset Context
+
+Typical analytical datasets include:
+
+- taxi trips
+- transactions
+- events
+- orders
+- logs
+
+Common columns:
+
+- pickup_location  
+- dropoff_location  
+- passenger_count  
+- total_amount  
+- trip_distance  
+- timestamp  
+
+---
+
+## SQL Query Execution Order
+
+Understanding execution order avoids many bugs:
+
+1. FROM  
+2. JOIN  
+3. WHERE  
+4. GROUP BY  
+5. HAVING  
+6. SELECT  
+7. ORDER BY  
+8. LIMIT  
+
+---
+
+## SELECT
+
+Used to choose which columns or expressions are returned.
+
+Example:
+
+SELECT pickup_location, total_amount
+FROM trips;
+
+Calculated columns:
+
+SELECT
+    total_amount,
+    total_amount * 0.8 AS driver_income
+FROM trips;
+
+---
+
+## WHERE
+
+Filters rows before aggregation.
+
+SELECT *
+FROM trips
+WHERE passenger_count > 2;
+
+Important:
+- WHERE filters rows
+- HAVING filters groups
+
+---
+
+## GROUP BY (Core Analytics Concept)
+
+GROUP BY is the workhorse of analytics SQL.
+
+Most analyst queries look like:
+
+- group by location
+- group by day
+- group by customer
+- group by product
+
+Then compute metrics such as counts, sums, averages, and maximums.
+
+---
+
+## Example Based on Transcript
+
+For each district or drop-off location we often want:
+
+- how many trips occurred
+- how much money was earned
+- maximum number of passengers
+
+SELECT
+    dropoff_location,
+    COUNT(*) AS total_trips,
+    SUM(total_amount) AS total_money,
+    MAX(passenger_count) AS max_passengers
+FROM trips
+GROUP BY dropoff_location;
+
+This pattern appears in the majority of analytics queries.
+
+---
+
+## GROUP BY Multiple Columns
+
+SELECT
+    pickup_location,
+    dropoff_location,
+    COUNT(*) AS trips
+FROM trips
+GROUP BY pickup_location, dropoff_location;
+
+Each unique combination becomes one row.
+
+---
+
+## Aggregate Functions
+
+Common aggregates:
+
+- COUNT(*)
+- SUM(column)
+- AVG(column)
+- MIN(column)
+- MAX(column)
+
+Example:
+
+SELECT AVG(total_amount) AS avg_fare
+FROM trips;
+
+---
+
+## HAVING
+
+Used to filter aggregated results.
+
+SELECT
+    dropoff_location,
+    COUNT(*) AS trips
+FROM trips
+GROUP BY dropoff_location
+HAVING COUNT(*) > 100;
+
+Rule:
+- WHERE → before GROUP BY
+- HAVING → after GROUP BY
+
+---
+
+## ORDER BY
+
+Used to sort results.
+
+SELECT
+    dropoff_location,
+    COUNT(*) AS trips
+FROM trips
+GROUP BY dropoff_location
+ORDER BY trips DESC;
+
+---
+
+## LIMIT
+
+Used to restrict output size.
+
+SELECT *
+FROM trips
+ORDER BY total_amount DESC
+LIMIT 10;
+
+Very useful for exploration and debugging.
+
+---
+
+## JOINs
+
+In production systems, data is split across multiple tables.
+
+Examples:
+- trips
+- locations
+- drivers
+- vehicles
+
+---
+
+## INNER JOIN
+
+Returns only matching rows.
+
+SELECT
+    t.trip_id,
+    l.zone
+FROM trips t
+JOIN locations l
+ON t.dropoff_location_id = l.location_id;
+
+---
+
+## LEFT JOIN
+
+Keeps all rows from the left table.
+
+SELECT
+    t.trip_id,
+    l.zone
+FROM trips t
+LEFT JOIN locations l
+ON t.dropoff_location_id = l.location_id;
+
+Most analytics queries use LEFT JOIN.
+
+---
+
+## JOIN + GROUP BY (Most Common Pattern)
+
+SELECT
+    l.zone,
+    COUNT(*) AS total_trips,
+    SUM(t.total_amount) AS revenue
+FROM trips t
+LEFT JOIN locations l
+    ON t.dropoff_location_id = l.location_id
+GROUP BY l.zone;
+
+This is the standard analytical SQL structure.
+
+---
+
+## Common Analytics Use Cases
+
+### Trips per day
+
+SELECT
+    DATE(pickup_datetime) AS day,
+    COUNT(*) AS trips
+FROM trips
+GROUP BY day;
+
+---
+
+### Revenue per district
+
+SELECT
+    district,
+    SUM(total_amount) AS revenue
+FROM trips
+GROUP BY district;
+
+---
+
+### Average passengers per location
+
+SELECT
+    dropoff_location,
+    AVG(passenger_count) AS avg_passengers
+FROM trips
+GROUP BY dropoff_location;
+
+---
+
+## Data Ingestion Context
+
+Typical pipeline:
+
+CSV → Python ingestion script → PostgreSQL → SQL analytics
+
+SQL remains critical even when using Spark, BigQuery, Snowflake, or Redshift.
+
+---
+
+## Best Practices
+
+- Avoid SELECT *
+- Use clear aliases
+- Format queries
+- Validate with LIMIT
+- Always double-check GROUP BY logic
+- Think in aggregations, not rows
+
+---
+
+## Key Takeaways
+
+- GROUP BY is the foundation of analytics SQL
+- JOIN connects business context
+- Most real queries combine both
+- Mastering these covers ~80% of real SQL usage
+
+---
+
+## Closing
+
+We started with infrastructure and ingestion,
+then refreshed SQL fundamentals,
+and practiced analytical querying patterns.
+
+This knowledge is essential for:
+- data engineering
+- analytics
+- machine learning feature engineering
+- business reporting
+
+End of SQL Refresher Documentation
+```
+
+---
+
+# GCP (Google Cloud Platform)
+
+![](./imgs/1.png)
+![](./imgs/2.png)
+
+---
+
+# DE Zoomcamp 1.3.1 - Terraform Primer
