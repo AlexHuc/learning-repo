@@ -1,0 +1,65 @@
+id: 09_gcp_taxi_scheduled
+namespace: zoomcamp
+description: |
+  Local processing of NYC taxi data without GCP dependencies.
+  CSV data used here comes from: https://github.com/DataTalksClub/nyc-tlc-data/releases
+
+inputs:
+  - id: taxi
+    type: SELECT
+    displayName: Select taxi type
+    values: [yellow, green]
+    defaults: green
+  - id: run_date
+    type: STRING
+    displayName: Run date (format YYYY-MM, e.g., 2020-12)
+    required: false
+
+variables:
+  run_date: "{% if inputs.run_date is defined %}{{inputs.run_date}}{% else %}{{trigger.date | date('yyyy-MM')}}{% endif %}"
+  file: "{{inputs.taxi}}_tripdata_{{vars.run_date}}.csv"
+
+tasks:
+  - id: set_label
+    type: io.kestra.plugin.core.execution.Labels
+    labels:
+      file: "{{render(vars.file)}}"
+      taxi: "{{inputs.taxi}}"
+
+  - id: extract
+    type: io.kestra.plugin.scripts.shell.Commands
+    outputFiles:
+      - "*.csv"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    commands:
+      - wget -qO- https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{{inputs.taxi}}/{{render(vars.file)}}.gz | gunzip > {{render(vars.file)}}
+
+  - id: process_data
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    inputFiles:
+      "{{render(vars.file)}}" : "{{outputs.extract.outputFiles[inputs.taxi ~ '_tripdata_' ~ vars.run_date ~ '.csv']}}"
+    commands:
+      - |
+        echo "File {{render(vars.file)}} downloaded successfully"
+        ls -lh {{render(vars.file)}}
+        wc -l {{render(vars.file)}}
+
+  - id: purge_files
+    type: io.kestra.plugin.core.storage.PurgeCurrentExecutionFiles
+    description: Remove downloaded files after processing
+
+triggers:
+  - id: green_schedule
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 9 1 * *"
+    inputs:
+      taxi: green
+
+  - id: yellow_schedule
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 10 1 * *"
+    inputs:
+      taxi: yellow

@@ -1,0 +1,39 @@
+{
+    "id": "2Ay55uABwzNPCy5AplX3lc",
+    "namespace": "zoomcamp",
+    "flowId": "09_gcp_taxi_scheduled",
+    "flowRevision": 1,
+    "inputs": {
+        "taxi": "yellow"
+    },
+    "labels": [
+        {
+            "key": "system.correlationId",
+            "value": "2Ay55uABwzNPCy5AplX3lc"
+        }
+    ],
+    "variables": {
+        "data": "{{outputs.extract.outputFiles[inputs.taxi ~ '_tripdata_' ~ (trigger.date | date('yyyy-MM')) ~ '.csv']}}",
+        "file": "{{inputs.taxi}}_tripdata_{{trigger.date | date('yyyy-MM')}}.csv",
+        "table": "{{kv('GCP_DATASET')}}.{{inputs.taxi}}_tripdata_{{trigger.date | date('yyyy_MM')}}",
+        "gcs_file": "gs://{{kv('GCP_BUCKET_NAME')}}/{{vars.file}}"
+    },
+    "state": {
+        "current": "CREATED",
+        "histories": [
+            {
+                "state": "CREATED",
+                "date": "2026-01-26T15:14:59.162892966Z"
+            }
+        ],
+        "duration": "PT0.01929375S",
+        "startDate": "2026-01-26T15:14:59.162892966Z"
+    },
+    "originalId": "2Ay55uABwzNPCy5AplX3lc",
+    "deleted": false,
+    "metadata": {
+        "attemptNumber": 1,
+        "originalCreatedDate": "2026-01-26T15:14:59.162920300Z"
+    },
+    "url": "http://localhost:8080/ui/main/executions/zoomcamp/09_gcp_taxi_scheduled/2Ay55uABwzNPCy5AplX3lc"
+}
