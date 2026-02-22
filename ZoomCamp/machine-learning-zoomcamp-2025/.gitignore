@@ -1,5 +1,9 @@
 # venv
 /mle_venv
+/mlzoomcamp
+
+# evironment variables
+/certificate/.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
