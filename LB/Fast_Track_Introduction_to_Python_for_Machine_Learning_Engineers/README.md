@@ -6,7 +6,7 @@ This is a Template Project that reflects the Python and Machine Learning basic k
 
 ### The Artificial Intelligence Hierarchy
 
-![Artificial Intelligence Hierarchy](/imgs/1.png)
+![Artificial Intelligence Hierarchy](./imgs/1.png)
 
 - **Artificial Intelligence**: Intelligence exhibited by machine or software
   - **Machine Learning**: The functionality that helps software perform task without explicit programming or rules
@@ -15,23 +15,23 @@ This is a Template Project that reflects the Python and Machine Learning basic k
 
 ### High Level Machine Learning Nomenclature
 
-![Nomenclature1](/imgs/2.png)
-![Nomenclature2](/imgs/3.png)
+![Nomenclature1](./imgs/2.png)
+![Nomenclature2](./imgs/3.png)
 
 ### Types of Machine Learning
 
-![Types of Machine Learning](/imgs/4.png)
+![Types of Machine Learning](./imgs/4.png)
 
 - **Supervised Machine Learning Model - example -**
-![Supervised_regression](/imgs/5.png)
-![Supervised_classification](/imgs/6.png)
+![Supervised_regression](./imgs/5.png)
+![Supervised_classification](./imgs/6.png)
 
 - **Unsupervised Machine Learning Model - example -**
-![Unsupervised_clustering](/imgs/7.png)
+![Unsupervised_clustering](./imgs/7.png)
 
 - **Reinforcement Machine Learning Model - example -**
-![Reinforcement](/imgs/8.png)
+![Reinforcement](./imgs/8.png)
 
 ### The Machine Learning Pipeline
 
-![The Machine Learning Pipeline](/imgs/9.png)
+![The Machine Learning Pipeline](./imgs/9.png)
