@@ -1,6 +1,6 @@
 # OneLake Overview
 
-<!-- ## What is OneLake? -->
+## OneLake
 ![OneLake](../imgs/3.png)
 
 OneLake is the **logical data lake provided by Microsoft Fabric**, designed to serve as a **single, unified location for all organizational analytical data**.
@@ -36,7 +36,7 @@ OneLake is built on top of **Azure Data Lake Storage**, allowing it to support *
 
 ---
 
-<!-- ## What is a Workspace? -->
+## Workspace
 ![Workspace Overview](../imgs/5.png)
 
 In Microsoft Fabric, a **workspace** is a container used to **create, organize, and manage data and analytics resources while enabling collaboration between users and teams**.
@@ -70,5 +70,93 @@ Depending on their assigned role, users can perform different tasks such as:
 
 ### 4. Security
 Each workspace can be **secured independently**, ensuring that data and projects are accessible **only to authorized users within that workspace**. This helps organizations maintain proper access control and data protection.
+
+---
+
+## Create Workspace
+
+Press "New Workspace" button:
+![New Workspace](../imgs/7.png)
+![New Workspace](../imgs/8.png)
+![New Workspace](../imgs/9.png)
+Press "Apply"
+
+Navigate to "New item"
+![New Item inside Workspace](../imgs/10.png)
+Create a Notebook
+![Notebook inside Workspace](../imgs/11.png)
+![Notebook inside Workspace](../imgs/12.png)
+
+---
+
+## Adding Folders to a Workspace
+
+A **folder** is an **easy way to manage all your objects into your workspace**.
+
+Press the button "New folder"
+![Create new folder inside the Workspace](../imgs/13.png)
+
+
+---
+
+## Lakehouse
+
+![Lakehouse](../imgs/14.png)
+
+A **Lakehouse** is a modern data architecture that combines the best features of **data lakes** and **data warehouses** into a single platform.
+
+It allows organizations to store large volumes of raw data while also enabling **high-performance analytics and reporting** on that same data.
+
+An easy way to remember it:  
+A **Lakehouse = Data Lake + Data Warehouse**
+
+---
+
+<!-- ## Key Features of a Lakehouse -->
+![Key Features of Lakehouse](../imgs/15.png)
+
+### 1. Unified Storage
+A Lakehouse stores both **structured and unstructured data** in a single storage location, eliminating the need for separate storage systems.
+
+### 2. Scalability
+Like a **data lake**, a Lakehouse can handle **large volumes of data**, making it suitable for big data workloads.
+
+### 3. High Performance
+Like a **data warehouse**, it provides **high performance for analytics and reporting**, enabling faster data queries and insights.
+
+### 4. Data Lake Integrations
+Lakehouses in Microsoft Fabric use the **Delta format**, which introduces **ACID transactions** and improved reliability for big data workloads.
+
+### 5. SQL Analytical Endpoints
+Microsoft Fabric automatically generates **SQL Analytical Endpoints**, allowing users to query Lakehouse data directly using **SQL tools and queries**.
+
+### 6. Automatic Table Discovery
+The system automatically **discovers and registers tables**, simplifying data management and making datasets easier to access and use.
+
+---
+
+## Lakehouse Demo
+
+You can press "Build a lakehouse"
+![Key Features of Lakehouse](../imgs/16.png)
+
+Another method:
+Go to "Human Resources Workspace" and click on "New Item", navigate down to "Store data" and click on "Lakehouse"
+![Create a Lakehouse](../imgs/17.png)
+
+Give the Lakehouse a name and press "Create"
+![Give the Lakehouse a name](../imgs/18.png)
+
+Inside the Lakehouse we have "Tables" and "Files" that we can import
+![Lakehouse](../imgs/19.png)
+
+Let's create e subfolder and gave it the name "Training Datasets".
+In the subfolder "Training Datasets" go and import some data "titanic.csv"
+![Titanic CSV](../imgs/20.png)
+
+From this csv let's make a table
+![Titanic Table](../imgs/21.png)
+![Titanic Table](../imgs/22.png)
+![Titanic Table](../imgs/23.png)
 
 ---

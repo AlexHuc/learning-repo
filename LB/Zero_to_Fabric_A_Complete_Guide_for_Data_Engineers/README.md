@@ -54,5 +54,9 @@ Fabric simplifies data architecture by providing:
 - A single optimized environment  
 - Built-in security  
 - Governance and compliance tools  
-- Integrated data services  
+- Integrated data services 
+
+---
+
+Tutorial: [Start a Microsoft Fabric Trial without using a work email address](https://www.youtube.com/watch?v=RHV7jZqc_tE)
 
