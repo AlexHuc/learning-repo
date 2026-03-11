@@ -349,3 +349,157 @@ It helps us eliminating duplicated data.
 
 ## SQL Endpoint Demo
 
+In Microsoft Fabric, a **SQL Endpoint** refers to the **SQL Analytics Endpoint**.  
+This endpoint provides a **SQL-based interface** that allows users to **query Delta tables stored in a Lakehouse** using standard SQL tools and queries.
+
+---
+
+## Accessing a SQL Analytics Endpoint
+
+Let’s walk through a simple example.
+
+### 1. Open the Workspace
+
+Navigate to the **Human Resources** workspace.
+"
+---
+
+### 2. Open the Lakehouse
+
+Inside the Lakehouse **HR_01**, you will see two related items automatically created:
+
+- **HR_01 – Semantic Model**
+- **HR_01 – SQL Analytics Endpoint**
+
+Click on **HR_01 (SQL Analytics Endpoint)** to open the SQL interface where you can **begin querying your data using SQL**.
+
+---
+
+### 3. SQL Endpoint in a Warehouse
+
+Within the **HR_01 Warehouse**, you will see:
+
+- **HR_01 – Semantic Model**
+
+To access the SQL endpoint for the warehouse:
+
+1. Open the **HR_01 Warehouse**
+2. Navigate to **Settings**
+3. Locate the **SQL Connection String**
+
+This connection string represents the **SQL endpoint used to connect to the warehouse**.
+
+![Endpoint in the Warehouse](../imgs/41.png)
+
+---
+
+## Purpose of SQL Endpoints
+
+SQL endpoints allow external tools and users to **connect to Microsoft Fabric data items** such as:
+
+- **Lakehouses**
+- **Warehouses**
+
+Using the endpoint, users can query data through **T-SQL, BI tools, or other SQL-compatible applications**.
+
+---
+
+## Create DW for Visual Query
+
+We go to "Accounting" workspace, click on "New Item", navigate down to "Sample Warehouse" and click on it and give the warehouse the name "ACCTG_DW01" and click "Create".
+
+This will create:
+- Creating warehouse
+- Craeting tables
+- Copying data
+- Wrapping up
+
+---
+
+## Visual Query Editor Demo
+
+The data was loaded. On the button "New SQL query" click on "New visual query". We created this "Visual query 2", now drag and drop the column "Date" into the visual query and then the column "Weather".
+
+![Visual Query Editor Demo](../imgs/42.png)
+
+Now we got this visual interface for crafting our queryes. This is a tool for peoples that aren't strong on SQL. This Visual Query is the domain of the Data Analyst.
+
+---
+
+## Managing Access in Microsoft Fabric
+
+![Managing Access in Fabric](../imgs/43.png)
+
+Managing access in **Microsoft Fabric** involves a combination of **Workspace Roles** and **Item Permissions**.  
+Workspace roles control access at the **workspace level**, while item permissions allow **more granular control over specific assets** within the workspace.
+
+---
+
+## Workspace Roles
+
+![Workspace Roles](../imgs/44.png)
+
+Workspace roles define the **level of access users have across the entire workspace**. There are four main roles:
+
+### 1. Admin
+- Full administrative control over the workspace  
+- Can manage workspace settings and permissions  
+- Has full access to all data and items within the workspace
+
+### 2. Member
+- Can **view, modify, and share** all content in the workspace  
+- Can create and manage workspace items
+
+### 3. Contributor
+- Can **view and modify** content within the workspace  
+- Cannot manage workspace settings or user permissions
+
+### 4. Viewer
+- Can **view content only**  
+- Cannot modify or create items in the workspace
+
+---
+
+## Item Permissions
+
+![Item Permissions](../imgs/45.png)
+
+Item permissions control **access to specific items within a workspace**, such as **Lakehouses, Warehouses, reports, or datasets**.  
+These permissions provide **more granular control** than workspace roles.
+
+There are four main item permissions:
+
+### 1. Read
+Allows users to **view item metadata and reports**.
+
+### 2. ReadData
+Allows users to **read and query data** from the item.
+
+### 3. Write
+Allows users to **modify or update the item**.
+
+### 4. Share
+Allows users to **share the item with others and manage its permissions**.
+
+--- 
+
+## Create Group and Assign Permissions
+
+Let's create a Role.
+We are in the workspace "ACCT_01".
+Click on the "Categories" and them on the "Manage OneLake data access (preview)"
+![Manage OneLake data access (preview)](../imgs/46.png)
+
+We've got the "Default Viewer". We will create a new role, click on the button "New Role", add a Role name "EmployeesHR", select the bullet point "Selected Folders". select "\Tables Folder", we see that we can't select the table "Categories" because we can't create Roles on the Shortcuts.
+![Can't create role on shortcut](../imgs/46.png)
+
+Got to Home, select the "Human Resources" workspace and select the lakehouse "HR_01".
+
+Click on the "Categories" and them on the "Manage OneLake data access (preview)"
+![Manage OneLake data access (preview)](../imgs/47.png)
+
+We've got the "Default Viewer". We will create a new role, click on the button "New Role", add a Role name "EmployeesHR", select the bullet point "Selected Folders". select "\Tables Folder", now we can select "Categories" and click Save.
+![Create role](../imgs/48.png)
+
+Go on the "Manage OneLake data access (preview)", click on the 3 dot points of the Role "EmployeesHR" and select "Assign" and assign it to somebody and select the permissions that you want to gave to that person.
+![Assign role](../imgs/49.png)
