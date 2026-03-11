@@ -160,3 +160,192 @@ From this csv let's make a table
 ![Titanic Table](../imgs/23.png)
 
 ---
+
+## Load OData Dataflow Gen2
+
+Let's go to Lakehouse "HR_01" and let's use a tool "New Dataflow Gen2" do load more data. 
+![Dataflow Gen2](../imgs/24.png)
+
+Press on the "New Dataflow Gen2" we will create a new data pipeline.
+![Dataflow Gen2](../imgs/25.png)
+
+We are going to use **OData**, which is **Open Data Protocol** and it is a queryable web API.
+Press "Get data from another data source" and search for "OData" and select it and put in the URL the following link http://services.odata.org/V4/Northwind/Northwind.svc and hit "Next".
+![Dataflow Gen2](../imgs/26.png)
+
+It is going to give as a list of tables to choose from from that source to import into our Lake.
+Choose "Categories", "Customers" and "Employees" and hit "Create".
+![Dataflow Gen2](../imgs/27.png)
+
+The data will open it Power Query and take a look at the data before you save it. After you check the data hit "Publish Now".
+![Dataflow Gen2](../imgs/28.png)
+
+This operation will push that data to our Lake and we can see our Data flow 1 is in progress.
+![Dataflow 1](../imgs/29.png)
+
+The data should be in the Tables or the Lake.
+
+---
+
+## Delta Tables
+
+<!-- ### What is Delta Format? -->
+![Delta Format](../imgs/30.png)
+
+The **Delta format** in OneLake refers to **Delta Lake**, an **open-source storage format** that brings **ACID transactions** and reliability to **Apache Spark and big data workloads**.
+
+In OneLake, **Delta tables organize file-based data into rows and columns**, making it accessible to multiple compute engines such as **notebooks, Kusto, Lakehouses, and Warehouses**. This structure enables efficient data processing, analytics, and querying across the Microsoft Fabric ecosystem.
+
+If you're not familiar with **ACID properties**, it's important to understand them because they guarantee **reliable and consistent data operations**.
+
+---
+
+<!-- ## Key Features of Delta Format -->
+![Key Features of Delta Format](../imgs/31.png)
+
+### 1. Data Versioning
+Delta tables are stored as **Parquet files**, which are **immutable**.  
+This means existing files are never modified. Instead, each write operation creates **new Parquet files**, representing changes and allowing the system to maintain **multiple versions of the data**.
+
+### 2. Transaction Log Files
+Delta tables use **JSON-based transaction log files** to track all changes made to the table. These logs record the **order and metadata of Parquet files** associated with the table, ensuring consistency and enabling time travel and version tracking.
+
+### 3. Compatibility
+Delta tables can be accessed using multiple languages and query engines, including:
+
+- **DAX (Data Analysis Expressions)**
+- **MDX (Multidimensional Expressions)**
+- **T-SQL**
+- **Spark SQL**
+- **Python**
+
+This flexibility allows different tools and services within Microsoft Fabric to work with the same data.
+
+### 4. Optimization
+Delta tables can be optimized for **Direct Lake semantic models**, improving **query performance and reliability**. Optimization techniques such as file compaction and indexing help ensure efficient data access for analytics and reporting.
+
+---
+
+## OneLake File Explorer
+
+OneLake explorer work just like OneDrive and it works only on Windows.
+
+---
+
+## Parquet File Defined
+
+### What is a Parquet File?
+
+![Parquet File](../imgs/32.png)
+
+A **Parquet file** is a **columnar storage file format** designed for **efficient data processing and analytics**, especially in **big data environments**.
+
+Instead of storing data row by row like traditional databases, Parquet stores data **column by column**, which allows analytics engines to read only the data they need. This significantly improves **query performance and storage efficiency** for large datasets.
+
+Parquet is widely used in modern data platforms such as **Apache Spark, Hadoop ecosystems, and cloud data platforms including Microsoft Fabric**.
+
+---
+
+## Key Features of Parquet Files
+
+![Key Features of Parquet Files](../imgs/33.png)
+
+### 1. Columnar Storage
+Data is stored **by column rather than by row**.  
+This allows analytics systems to read only the required columns during queries, improving **query performance and efficiency**, especially for **read-heavy workloads** common in data warehouses and analytics.
+
+### 2. Efficient Compression
+Since **similar data types are stored together in columns**, Parquet can apply **highly efficient compression techniques**.  
+This reduces storage requirements and lowers infrastructure costs.
+
+### 3. Schema Evolution
+Parquet files support **schema evolution**, meaning the data structure can change over time.  
+For example, **new columns can be added without rewriting the entire dataset**, which is useful for evolving data pipelines.
+
+### 4. Compatibility
+Parquet is supported by many **data processing frameworks and analytics systems**, including:
+
+- **Apache Spark**
+- **Hadoop**
+- **Modern cloud data platforms**
+- **Various analytics engines**
+
+This makes it a **versatile format for many data workloads**.
+
+### 5. Metadata Storage
+Parquet files store **metadata about the schema and structure of the data** within the file itself.  
+This allows systems to understand the dataset **without reading the entire file**, enabling faster query planning and execution.
+
+Because of these advantages, **columnar storage formats like Parquet are widely used in modern data warehouses**, including platforms such as **Snowflake, BigQuery, and Microsoft Fabric**.
+
+---
+
+<!-- ## What is a Shortcut? -->
+![Shortcut](../imgs/34.png)
+
+In Microsoft Fabric, a **Shortcut** is an object in **OneLake** that points to an existing storage location, either **internal or external**. It works similarly to a **symbolic link**, allowing users to reference data **without copying or moving it** into another location.
+
+Shortcuts enable organizations to access data from multiple storage systems while keeping the data in its original location, simplifying data integration and reducing duplication.
+
+---
+
+<!-- ## Key Features of Shortcuts -->
+![Shortcut Features](../imgs/35.png)
+
+### 1. Unified Data Access
+Shortcuts help **unify data across different domains, clouds, and storage accounts** by creating a **virtual data lake** that allows users to access distributed data through OneLake.
+
+### 2. Target Path and Shortcut Path
+A shortcut consists of two main locations:
+
+- **Target Path** – The original storage location where the data actually resides  
+- **Shortcut Path** – The location in **OneLake** where the shortcut appears  
+
+This allows users to interact with the data **as if it were stored directly in OneLake**.
+
+### 3. Easy Access Through OneLake
+Shortcuts appear as **folders within OneLake**, making them accessible to any **Fabric workload or service** that has permission to access OneLake.
+
+### 4. Flexibility
+Shortcuts can connect to multiple storage systems, including:
+
+- **Azure Data Lake Storage**
+- **Amazon S3**
+- **Dataverse**
+- **Google Cloud Platform (GCP)**
+
+This flexibility allows organizations to **integrate data from multiple cloud environments**.
+
+### 5. Metadata Synchronization
+When shortcuts are created to supported data lake sources, **OneLake automatically synchronizes metadata**.  
+This allows the system to recognize the underlying data **as structured tables**, making it easier to query and analyze.
+
+---
+
+## Shortcut Demo
+
+Create another workspace named "Accounting".
+We are going to create a shortcut in "Accounting" to point into the workspace "Human Resources".
+Let's go to "Accounting", click on our Lakehouse "ACCT_01". 
+Click on "Get data" -> "New Shortcut".
+![Shortcut](../imgs/36.png)
+
+A pop-up will appeare, choose "Microsoft OneLake".
+We want to navigate to "HR_01" because that's where we want to create a shortcut to "ACCT_01".
+Choose "HR_01" and click Next.
+![Shortcut](../imgs/37.png)
+
+From the Tables select "Categories" and "Customers" and click Next
+![Shortcut](../imgs/38.png)
+
+Review the folders and tables and click Create.
+![Shortcut](../imgs/39.png)
+
+Now in the "ACCT_01" we have a shortcut that points to the physical tables from the "HR_01".
+It helps us eliminating duplicated data.
+![Shortcut](../imgs/40.png)
+
+---
+
+## SQL Endpoint Demo
+
