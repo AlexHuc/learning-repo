@@ -143,8 +143,7 @@ These pools provide **dedicated clusters or compute nodes** that can be configur
 
 ---
 
-## Key Features of Spark Pools
-
+<!-- ## Key Features of Spark Pools -->
 ![Key Features of Spark Pools](../imgs/109.png)
 
 ### 1. Spark-Based Compute
