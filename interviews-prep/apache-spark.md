@@ -246,7 +246,7 @@ df.filter(df.age > 30)
 - `disk I/O`
 - `data redistribution`
 
-**`Optimizing Spark`** &rarr; **often means reducing shuffle operations.**
+**`Optimizing Spark`** &rarr; **often means reducing shuffle operations**
 
 ---
 
