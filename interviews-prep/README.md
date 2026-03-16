@@ -1,0 +1,1 @@
+Fast repo to read before an interview
