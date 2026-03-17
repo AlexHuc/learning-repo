@@ -218,3 +218,22 @@ OPTIMIZE table_name
 ```sql
 OPTIMIZE table_name ZORDER BY (customer_id)
 ```
+
+---
+
+## Simple Interview Definition
+
+1. What is a Delta Lake?
+
+**`Delta Lake`** &rarr; is a storage layer built on top of data lakes that adds reliability and performance features such as ACID transactions, schema enforcement, time travel, and efficient updates. It uses a transaction log to track all changes to data stored in Parquet files, allowing Spark to treat data lake files like reliable database tables.
+
+
+2. Why use Delta Lake instead of Parquet?
+
+- ACID transactions
+- schema enforcement
+- time travel
+- merge operations
+- better reliability
+- improved performance
+
