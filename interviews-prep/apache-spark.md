@@ -141,6 +141,8 @@ Typical reason for new stage:
 ## RDD (Resilient Distributed Dataset)
 
 **`RDD`** &rarr; **an imutable distributed collection of objects partitioned across cluster nodes**
+
+
 ↳ **the lowest-level distributed data structure in Spark**
 
 <u>Key characteristics</u>:
