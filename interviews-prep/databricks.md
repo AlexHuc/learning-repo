@@ -271,3 +271,194 @@ Today, Databricks is presented as a platform where:
 - AI engineers build AI systems
 - governance teams enforce compliance
 - business users can interact with data through prompts
+
+---
+
+# 🧠 Job Cluster vs All-Purpose Cluster (Core Idea)
+
+**Job clusters are temporary and created for specific jobs, while all-purpose clusters are persistent and used for interactive work**
+
+---
+
+## 🔵 Job Cluster
+
+**`Job Cluster`** &rarr; a cluster that is **created automatically when a job starts and terminated when the job finishes**
+
+### ⚙️ How it works
+- Job starts &rarr; cluster is created
+- Job runs &rarr; executes tasks
+- Job ends &rarr; cluster is destroyed
+
+### 🎯 Characteristics
+- Ephemeral (temporary)
+- Dedicated to a single job
+- Automatically managed
+- Cost-efficient
+
+---
+
+## 🟢 All-Purpose Cluster
+
+**`All-Purpose Cluster`** &rarr; a shared, long-running cluster used for interactive workloads
+
+### ⚙️ How it works
+- You create it manually
+- It stays running until stopped
+- Multiple users can use it
+
+### 🎯 Characteristics
+- Persistent
+- Shared across users
+- Supports notebooks and ad-hoc queries
+- Higher cost if left running
+
+---
+
+## ⚖️ Key Differences
+| Feature    | Job Cluster           | All-Purpose Cluster        |
+| ---------- | --------------------- | -------------------------- |
+| Lifetime   | Temporary             | Persistent                 |
+| Usage      | Automated jobs        | Interactive work           |
+| Cost       | Lower (auto shutdown) | Higher (runs continuously) |
+| Sharing    | Single job            | Multiple users             |
+| Management | Automatic             | Manual                     |
+
+### 🧠 Important Insight
+Job clusters are preferred for production pipelines because they are isolated and cost-efficient.
+
+**Job clusters in production to ensure isolation and cost control, and all-purpose clusters for development and experimentation**
+
+### 🎯 One-Line Summary
+**Job cluster = temporary & automated**
+**All-purpose cluster = persistent & interactive**
+
+---
+
+## Photon
+
+**`Photon`** &rarr; **a high-performance execution engine in Databricks that accelerates SQL and DataFrame workloads**
+
+### 🔧 Simple Explanation
+<u>Think of it like this</u>:
+- Spark (Catalyst + Tungsten) &rarr; already fast
+- Photon &rarr; makes it even faster 🚀
+
+👉 **It replaces parts of the Spark execution engine with a more efficient one**
+
+---
+
+## ⚙️ What Photon Actually Does
+Photon improves performance by:
+
+### 1️⃣ Native Code Execution
+- Written in C++ (not JVM)
+- Runs closer to hardware
+
+👉 Faster than standard Spark execution
+
+### 2️⃣ Vectorized Processing
+- Processes data in batches instead of row by row
+
+👉 Better CPU utilization
+
+### 3️⃣ Optimized Algorithms
+- Faster joins
+- Faster aggregations
+- Better filtering
+
+### 4️⃣ Better CPU Efficiency
+- Uses modern CPU features (SIMD, caching)
+
+👉 Less overhead, more speed
+
+---
+
+### 📊 Where Photon Helps Most
+<u>Photon is especially effective for</u>:
+- SQL queries
+- DataFrame operations
+- Joins
+- Aggregations
+- ETL pipelines
+
+### 🔄 How It Fits in Spark
+```
+Your code
+   ↓
+Catalyst → builds optimized plan
+   ↓
+Photon → executes it faster than Tungsten
+```
+👉 Photon replaces parts of Tungsten execution layer
+
+### 🎯 Why Photon Is Important
+- Faster queries (often 2x–5x)
+- Lower compute costs
+- Better performance for large datasets
+
+### 🔥 Bonus Tip
+**Photon is fully compatible with Spark APIs, so no code changes are required to benefit from it**
+
+### 🎯 One-Line Summary
+**Photon = faster execution engine for Spark in Databricks**
+
+---
+
+## Delta Live
+
+**`Delta Live Tables`** &rarr; a framework in Databricks for building, managing, and automating reliable data pipelines using declarative code
+
+![Delta Live Tables](./imgs/28.png)
+
+### 🔧 Simple Explanation
+<u>Instead of manually writing</u>:
+- ingestion logic
+- transformations
+- error handling
+- pipeline orchestration
+
+👉 Delta Live Tables does it for you automatically.
+
+<u>You just define</u>:
+```
+what the data pipeline should do
+```
+
+<u>👉 Databricks handles</u>:
+- execution
+- dependencies
+- monitoring
+- optimization
+
+### ⚙️ How It Works
+You define tables using code (SQL or Python):
+```sql
+CREATE LIVE TABLE clean_data AS
+SELECT * FROM raw_data WHERE valid = true;
+```
+👉 DLT:
+1. Understands dependencies
+2. Builds the pipeline
+3. Runs it automatically
+
+### 🧩 Key Features
+1️⃣ Declarative Pipelines
+2️⃣ Automatic Orchestration
+3️⃣ Data Quality Checks
+4️⃣ Built-in Monitoring
+5️⃣ Incremental Processing
+
+### 🎯 Why Use Delta Live Tables
+- Less manual pipeline code
+- Built-in reliability
+- Easier maintenance
+- Faster development
+
+### 🔄 DLT vs Traditional Pipelines
+| Feature       | Traditional    | DLT       |
+| ------------- | -------------- | --------- |
+| Orchestration | Manual         | Automatic |
+| Data quality  | Custom code    | Built-in  |
+| Monitoring    | External tools | Built-in  |
+| Complexity    | Higher         | Lower     |
+

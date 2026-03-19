@@ -1,121 +1,121 @@
-# 🧠 Databricks Flashcards
+# 🧠 Technical Data Engineering Flashcards
 
 ---
 
-## 1. What is Databricks?
-**Q:** What is Databricks?  
-**A:** Databricks is a cloud-based data platform built on Apache Spark that provides tools for data engineering, data science, and analytics with managed infrastructure.
+## 1. How does Spark execute a job internally?
+**Q:** What happens when you run a Spark job?  
+**A:** The driver builds a DAG of transformations, splits it into stages based on shuffle boundaries, and assigns tasks to executors for parallel execution.
 
 ---
 
-## 2. What problem does Databricks solve?
-**Q:** What problems does Databricks solve?  
-**A:** It simplifies big data processing by managing Spark clusters, providing collaborative tools, and integrating data pipelines and analytics in one platform.
+## 2. What causes a shuffle in Spark?
+**Q:** When does a shuffle occur?  
+**A:** A shuffle happens when data needs to be redistributed across partitions, typically during joins, groupBy, or aggregations.
 
 ---
 
-## 3. What is a Databricks workspace?
-**Q:** What is a Databricks workspace?  
-**A:** A workspace is the environment where users create notebooks, manage jobs, clusters, and collaborate on data projects.
+## 3. Why is data skew a problem?
+**Q:** Why does data skew impact performance?  
+**A:** Because uneven data distribution causes some tasks to take much longer, leading to bottlenecks and underutilized resources.
 
 ---
 
-## 4. What is a Databricks cluster?
-**Q:** What is a cluster in Databricks?  
-**A:** A cluster is a group of virtual machines that run Spark workloads.
+## 4. How would you debug a slow Spark job?
+**Q:** How do you investigate a slow Spark job?  
+**A:** By analyzing the Spark UI, checking stages, identifying skewed tasks, examining shuffles, and reviewing execution plans.
 
 ---
 
-## 5. What are cluster types in Databricks?
-**Q:** What types of clusters exist in Databricks?  
-**A:** All-purpose clusters (interactive use) and job clusters (used for scheduled or automated jobs).
+## 5. What is predicate pushdown?
+**Q:** What is predicate pushdown?  
+**A:** It is an optimization where filters are applied as early as possible, reducing the amount of data read and processed.
 
 ---
 
-## 6. What is a Databricks notebook?
-**Q:** What is a notebook in Databricks?  
-**A:** A notebook is an interactive environment where users write and execute code in languages like Python, SQL, Scala, or R.
+## 6. What is partitioning and why is it important?
+**Q:** Why is partitioning important in big data?  
+**A:** It improves parallelism and query performance by dividing data into manageable chunks.
 
 ---
 
-## 7. What is DBFS?
-**Q:** What is DBFS (Databricks File System)?  
-**A:** DBFS is a distributed file system that provides access to data stored in cloud storage like S3 or Azure Data Lake.
+## 7. What is the difference between batch and streaming processing?
+**Q:** Batch vs streaming processing?  
+**A:** Batch processes large volumes of data at intervals, while streaming processes data continuously in near real-time.
 
 ---
 
-## 8. What is a Databricks job?
-**Q:** What is a job in Databricks?  
-**A:** A job is a scheduled or triggered task that runs notebooks, scripts, or workflows.
+## 8. What is exactly-once processing?
+**Q:** What does exactly-once processing mean?  
+**A:** It ensures each record is processed only once, even in the presence of failures or retries.
 
 ---
 
-## 9. What is a workflow in Databricks?
-**Q:** What is a workflow?  
-**A:** A workflow is a sequence of tasks that define a data pipeline, including dependencies between jobs.
+## 9. What is idempotency in data pipelines?
+**Q:** What is idempotency?  
+**A:** Running the same operation multiple times produces the same result, preventing duplicate data.
 
 ---
 
-## 10. What is Unity Catalog?
-**Q:** What is Unity Catalog?  
-**A:** Unity Catalog is a centralized governance layer for managing data access, permissions, and metadata across Databricks.
+## 10. What is schema-on-read vs schema-on-write?
+**Q:** What is the difference between schema-on-read and schema-on-write?  
+**A:** Schema-on-read applies schema when reading data, while schema-on-write enforces schema when writing data.
 
 ---
 
-## 11. What is Delta Lake in Databricks?
-**Q:** How does Databricks use Delta Lake?  
-**A:** Databricks uses Delta Lake as its default storage layer to provide reliable, high-performance data processing.
+## 11. What is a data lake vs data warehouse?
+**Q:** Data lake vs data warehouse?  
+**A:** A data lake stores raw data in various formats, while a data warehouse stores structured, processed data optimized for queries.
 
 ---
 
-## 12. What is Auto Loader?
-**Q:** What is Auto Loader in Databricks?  
-**A:** Auto Loader is a tool for incrementally ingesting new data files from cloud storage into Delta tables.
+## 12. What is a data lakehouse?
+**Q:** What is a data lakehouse?  
+**A:** It combines features of data lakes and data warehouses, enabling both raw storage and structured analytics.
 
 ---
 
-## 13. What is a Spark cluster in Databricks?
-**Q:** How does Databricks manage Spark clusters?  
-**A:** Databricks automatically provisions and scales Spark clusters based on workload requirements.
+## 13. What is the Bronze, Silver, Gold architecture?
+**Q:** What are Bronze, Silver, Gold layers?  
+**A:** Bronze is raw data, Silver is cleaned/transformed data, and Gold is business-ready aggregated data.
 
 ---
 
-## 14. What is cluster autoscaling?
-**Q:** What is autoscaling in Databricks?  
-**A:** Autoscaling automatically adjusts the number of worker nodes based on workload demand.
+## 14. What is data orchestration?
+**Q:** What is data orchestration?  
+**A:** Coordinating and managing workflows and dependencies in data pipelines, often using tools like Azure Data Factory.
 
 ---
 
-## 15. What is caching in Databricks?
-**Q:** How does caching work in Databricks?  
-**A:** Frequently accessed data is stored in memory to reduce recomputation and improve performance.
+## 15. What is fault tolerance in distributed systems?
+**Q:** What is fault tolerance?  
+**A:** The ability of a system to continue functioning even when some components fail.
 
 ---
 
-## 16. What is a job cluster vs all-purpose cluster?
-**Q:** What is the difference between job and all-purpose clusters?  
-**A:** Job clusters are created for specific jobs and terminated after execution; all-purpose clusters are shared for interactive use.
+## 16. What is horizontal scalability?
+**Q:** What is horizontal scaling?  
+**A:** Adding more machines to distribute workload instead of increasing the power of a single machine.
 
 ---
 
-## 17. What is Photon in Databricks?
-**Q:** What is Photon?  
-**A:** Photon is a high-performance query engine in Databricks that accelerates SQL and DataFrame workloads.
+## 17. What is a bottleneck in a data pipeline?
+**Q:** What is a bottleneck?  
+**A:** A point in the system where performance is limited due to resource constraints or inefficient processing.
 
 ---
 
-## 18. What is Delta Live Tables?
-**Q:** What are Delta Live Tables?  
-**A:** A framework for building reliable, maintainable, and testable data pipelines with automatic data quality checks.
+## 18. What is data consistency?
+**Q:** What does data consistency mean?  
+**A:** Ensuring data remains accurate and consistent across systems and over time.
 
 ---
 
-## 19. How does Databricks integrate with cloud storage?
-**Q:** How does Databricks connect to S3 or Azure Data Lake?  
-**A:** It uses native integrations and credentials to read/write data directly from cloud storage.
+## 19. What is a checkpoint in data processing?
+**Q:** What is a checkpoint?  
+**A:** A saved state of processing that allows recovery without restarting from the beginning.
 
 ---
 
-## 20. Why use Databricks for data engineering?
-**Q:** Why is Databricks popular for data engineering?  
-**A:** Because it simplifies distributed processing, integrates Spark and Delta Lake, supports scalable pipelines, and provides collaborative tools.
+## 20. How would you design a scalable data pipeline?
+**Q:** How do you design a scalable data pipeline?  
+**A:** By using distributed systems, partitioning data, ensuring fault tolerance, optimizing transformations, and orchestrating workflows efficiently.

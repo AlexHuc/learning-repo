@@ -4,7 +4,7 @@
 
 ## 1. What is Delta Lake?
 **Q:** What is Delta Lake?  
-**A:** Delta Lake is a storage layer built on top of data lakes that adds ACID transactions, schema enforcement, time travel, and efficient data management to Parquet-based data.
+**A:** Delta Lake is a storage layer built on top of data lakes that adds ACID transactions, schema enforcement, schema evolution, time travel, and efficient data management to Parquet-based data.
 
 ---
 
