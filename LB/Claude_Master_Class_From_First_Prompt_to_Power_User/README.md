@@ -1,0 +1,1 @@
+Explore the basics of Claude AI, its functionalities, and how it can benefit your daily tasks.
