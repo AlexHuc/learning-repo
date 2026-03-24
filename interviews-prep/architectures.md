@@ -87,6 +87,7 @@ Example:
 - Kafka
 - streaming pipelines
 
+---
 
 ## 1. Medallion Architecture
 ![Medallion Architecture](./imgs/36.png)
@@ -142,6 +143,7 @@ Example:
 4️⃣ Flexibility
 - You can rebuild Silver/Gold from Bronze
 
+---
 
 ## 2. Data Warehouse Architecture
 ![Data Warehouse Architecture](./imgs/37.png)
@@ -175,6 +177,7 @@ Sources → ETL/ELT → Data Warehouse → BI / Reporting
 | Flexibility | Low             | High           |
 | Performance | High            | Medium         |
 
+---
 
 ## 3. Data Mesh Architecture
 ![Data Mesh Architecture](./imgs/38.png)
@@ -283,6 +286,7 @@ Data Mesh is powerful but:
 
 👉 Not always the best choice
 
+---
 
 ## 4. Data Lake Architecture
 ![Data Lake Architecture](./imgs/39.png)
@@ -316,6 +320,8 @@ Meaning:
 
 🎯 One-Line Summary
 **Data lake = store everything, process later**
+
+---
 
 ## 5. Lakehouse Architecture
 ![Lakehouse Architecture](./imgs/40.png)
@@ -426,6 +432,7 @@ Bronze → Silver → Gold
 #### 🎯 One-Line Summary
 **Lakehouse = data lake + data warehouse combined**
 
+---
 
 ## 6. Lambda Architecture
 ![Lambda Architecture](./imgs/41.png)
@@ -531,6 +538,7 @@ Today, Lambda is often replaced by:
 #### 🎯 One-Line Summary
 **Lambda = batch + streaming together**
 
+---
 
 ## 7. Kappa Architecture
 ![Kappa Architecture](./imgs/42.png)
@@ -618,6 +626,7 @@ Kappa solves this:
 - replaying large data can be expensive
 - needs good data retention
 
+---
 
 ## 8. Event-Driven Architecture
 ![Event-Driven Architecture](./imgs/43.png)
