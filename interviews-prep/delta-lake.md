@@ -289,6 +289,8 @@ Before committing the transaction.
 
 ## 🔄 Schema Enforcement vs Schema Evolution
 
+![Schema Enforcement vs Schema Evolution](./imgs/32.jpg)
+
 ### Schema Enforcement
 - strict
 - blocks invalid writes

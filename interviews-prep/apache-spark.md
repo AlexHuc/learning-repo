@@ -314,6 +314,8 @@ df_filtered.show()
 
 &rarr; **used to change the number of partitions in a DataFrame** &rarr; work differently
 
+![Repartition vs Coalesce](./imgs/29.jpg)
+
 ---
 
 ## 🔵 Repartition
