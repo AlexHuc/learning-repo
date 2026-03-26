@@ -1,3 +1,7 @@
+# What is a Data Architecture?
+
+![What is a Data Architecture?](./imgs/46.jpg)
+
 # Data Engineering Architectures
 
 These architectures are often compared, but in reality, they adress different challanges.
@@ -91,6 +95,7 @@ Example:
 
 ## 1. Medallion Architecture
 ![Medallion Architecture](./imgs/36.png)
+![Medallion Architecture](./imgs/48.jpg)
 
 ### 🧠 What is Medallion Architecture?
 **`Medallion Architecture`** &rarr; a data design pattern that organizes data into layers (**Bronze, Silver, Gold**) to improve data quality, reliability, and usability
@@ -733,3 +738,25 @@ Analytics updates dashboard
 
 #### 🎯 One-Line Summary
 **Event-driven = systems react to events, not calls**
+
+---
+
+# Choosing a Data Architecture
+
+![Choosing a Data Architecture](./imgs/53.jpg)
+
+---
+
+# Top 12 Data Engineering Design Patterns
+
+![Top 12 Data Engineering Design Patterns](./imgs/57.jpg)
+
+## Choosing the right Data Engineering Pattern
+
+![Choosing the right Data Engineering Pattern](./imgs/58.jpg)
+
+---
+
+# Layers of a Modern Data Platform
+
+![Layers of a Modern Data Platform](./imgs/59.jpg)

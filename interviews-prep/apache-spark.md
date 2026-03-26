@@ -595,3 +595,9 @@ Tungsten → executes it efficiently
 
 ## 🎯 One-Line Summary
 **Tungsten = low-level performance engine of Spark**
+
+---
+
+# Cluster Sizing
+
+![Cluster Sizing](./imgs/49.jpg)

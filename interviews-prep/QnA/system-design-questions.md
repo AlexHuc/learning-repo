@@ -503,6 +503,3 @@ WHEN NOT MATCHED THEN
 ### 8. Performance
 - Partition by key (e.g., customer_id)
 - Optimize Delta table
-
----
-

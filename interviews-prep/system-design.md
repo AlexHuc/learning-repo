@@ -82,3 +82,9 @@ Good Answer Structure
 | Write functions      | Design systems        |
 | Solve small problems | Solve large problems  |
 | Focus on logic       | Focus on architecture |
+
+---
+
+# System Design Interview Ponts
+
+![System Design Interview Ponts](./imgs/61.jpg)

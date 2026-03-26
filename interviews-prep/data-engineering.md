@@ -64,3 +64,6 @@ If you run a pipeline twice:
 | Data quality        | Lower          | Higher          |
 | Use case            | Data lake      | Data warehouse  |
 
+# Hidden Risk of "Quick Data Pull"
+
+![Hidden Risk of "Quick Data Pull"](./imgs/56.jpg)

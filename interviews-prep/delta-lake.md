@@ -498,3 +498,10 @@ Works best with **high-cardinality columns** (e.g., user_id)
 
 #### 🎯 One-Line Summary
 **Z-Ordering = faster queries by grouping similar data together**
+
+---
+
+# Delta Lake vs Apache Iceberg vs Apache Hudi
+
+![Delta Lake vs Apache Iceberg vs Apache Hudi](./imgs/52.jpg)
+![Delta Lake vs Apache Iceberg vs Apache Hudi](./imgs/55.jpg)

@@ -162,5 +162,3 @@ Abstraction means hiding complexity and giving you a simpler way to work with so
 ## 18. What is a cluster?
 **Q:** What is a cluster in Spark/Databricks?  
 **A:** A cluster is a group of machines (nodes) that work together to process data in parallel.
-
----

@@ -19,6 +19,8 @@ SCD methods define **how these changes are handled and stored**.
 
 ## 🧩 SCD Types
 
+![SCD Types](./imgs/60.jpg)
+
 ---
 
 ## 🔹 Type 0 – Fixed Dimension

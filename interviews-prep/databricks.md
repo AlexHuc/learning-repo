@@ -461,4 +461,3 @@ SELECT * FROM raw_data WHERE valid = true;
 | Data quality  | Custom code    | Built-in  |
 | Monitoring    | External tools | Built-in  |
 | Complexity    | Higher         | Lower     |
-
