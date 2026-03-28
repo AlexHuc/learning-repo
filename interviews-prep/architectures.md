@@ -499,7 +499,7 @@ combines results from:
 #### 🧠 How It Works (Flow)
 ```
 Incoming Data
-     ↓
+           ↓
 -------------------------
 | Batch Layer           |
 | (full recomputation)  |
