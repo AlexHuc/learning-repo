@@ -18,4 +18,13 @@ Predictive History:
 - [] Game Theory
 - [] Great Books 
 
+Other things:
+- [] Maybe learning vim
+
 Soo.. thats a lot, I will also read some books and need to finish 2 ml projects.. yea, comming latter to this. I will put an X after I finish each thing from there.
+
+Future projects that I want to make in C/C++:
+- [] ChatGPT form scratch
+- [] A database server from scratch
+- [] A visuzalization tool from scratch
+- [] A machine learning and data processing lib from scratch
