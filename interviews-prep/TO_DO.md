@@ -1,0 +1,14 @@
+New things to add that I missed in the documentation:
+- bt index -> DBA thing
+- SQL Server MERGE to insert, update and delete Statement
+- functii de agregare vs analitice
+- snowflake schema vs star schema
+- star schema is for olap
+- snowflake schema is for olap
+- all the schemas that are for OLAP and for OLTP
+- create external gcp
+- what is a registery?
+- apache hive is a register? No
+- how to modify a file in python without open it
+- DDL and DML
+- MCP
