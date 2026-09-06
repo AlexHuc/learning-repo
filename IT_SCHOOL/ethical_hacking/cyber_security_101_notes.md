@@ -11,9 +11,9 @@ Linux is a popular choice for servers and the machines that you'll interact with
 | `whoami` | Tells you which user you are logged in as                    | `whoami`                           |
 | `echo`   | Outputs the text you provide                                 | `echo "Hello"`                     |
 | `ls`     | Lists the contents of the current directory                  | `ls`                               |
-| `cd`     | Changes directory — moves into a folder                      | `cd /home/user`                    |
+| `cd`     | Changes directory - moves into a folder                      | `cd /home/user`                    |
 | `cat`    | Displays the contents of a file                              | `cat file.txt`                     |
-| `pwd`    | Prints the current working directory — "where am I?"         | `pwd`                              |
+| `pwd`    | Prints the current working directory - "where am I?"         | `pwd`                              |
 | `find`   | Searches for **files and directories**, commonly **by name** | `find -name passwords.txt`         |
 | `grep`   | Searches **inside files for matching text**                  | `grep "password123" passwords.txt` |
 
@@ -31,7 +31,7 @@ Linux is a popular choice for servers and the machines that you'll interact with
 | `>`      | Redirects command output to a file. **Overwrites** existing content                                    | `echo "Hello" > file.txt`  |
 | `>>`     | Redirects command output to a file. **Appends** to existing content                                    | `echo "World" >> file.txt` |
 
-#### `&` — Background Execution
+#### `&` - Background Execution
 
 ```bash
 command &
@@ -39,7 +39,7 @@ command &
 
 The command runs in the background, allowing you to continue using the terminal.
 
-#### `&&` — Sequential Execution
+#### `&&` - Sequential Execution
 
 ```bash
 command1 && command2
@@ -47,7 +47,7 @@ command1 && command2
 
 `command2` runs after `command1` completes successfully.
 
-#### `>` — Overwrite
+#### `>` - Overwrite
 
 ```bash
 echo "Hello" > file.txt
@@ -55,7 +55,7 @@ echo "Hello" > file.txt
 
 Creates `file.txt` or replaces its existing contents.
 
-#### `>>` — Append
+#### `>>` - Append
 
 ```bash
 echo "Hello" >> file.txt
@@ -65,7 +65,7 @@ Creates `file.txt` if needed, or adds the output to the end of the existing file
 
 ---
 
-### 3. SSH — Secure Shell
+### 3. SSH - Secure Shell
 
 **SSH (Secure Shell)** is a protocol used to securely communicate with and access another computer over a network.
 
@@ -83,7 +83,7 @@ Remote Linux Machine
 
 ---
 
-### 4. The `man` — Manual Pages
+### 4. The `man` - Manual Pages
 
 Linux provides built-in documentation for many commands through **manual pages**, commonly accessed with the `man` command.
 
@@ -277,7 +277,7 @@ rwxrwxrwx = 777
 
 ---
 
-### 11. `chmod` — Changing Permissions
+### 11. `chmod` - Changing Permissions
 
 `chmod` changes the permissions of a file or directory.
 
@@ -616,4 +616,816 @@ The three digits always represent:
 
 ```bash
 [Owner][Group][Others]
+```
+
+## Linux Text Editors & File Transfer Cheat Sheet
+
+### 1. Terminal Text Editors
+
+Terminal text editors allow you to create and modify files directly from the command line.
+
+Two common editors are:
+
+| Editor       | Difficulty        | Main Use                                             |
+| ------------ | ----------------- | ---------------------------------------------------- |
+| `nano`       | Beginner-friendly | Simple text editing                                  |
+| `vim` / `vi` | Advanced          | Powerful editing, programming, system administration |
+
+---
+
+### 2. Nano
+
+`nano` is a simple, beginner-friendly terminal text editor.
+
+### Open or Create a File
+
+```bash
+nano filename
+```
+
+For example:
+
+```bash
+nano myfile
+```
+
+> If `myfile` doesn't exist, Nano will create it when you save.
+
+#### Nano Interface
+
+When Nano opens, you will see something similar to:
+
+```bash
+GNU nano 4.8                                             myfile
+
+^G Get Help    ^O Write Out   ^W Where Is    ^K Cut Text
+^X Exit        ^R Read File   ^\ Replace     ^U Paste Text
+```
+
+The `^` symbol represents the **Ctrl** key.
+
+For example:
+
+```bash
+^X = Ctrl + X
+```
+
+---
+
+### 3. Basic Nano Shortcuts
+
+| Shortcut   | Action                              |
+| ---------- | ----------------------------------- |
+| `Ctrl + X` | Exit Nano                           |
+| `Ctrl + O` | Write Out / Save the file           |
+| `Ctrl + W` | Search for text                     |
+| `Ctrl + K` | Cut the current line                |
+| `Ctrl + U` | Paste previously cut text           |
+| `Ctrl + J` | Justify text                        |
+| `Ctrl + C` | Show the current cursor position    |
+| `Ctrl + T` | Spell check                         |
+| `Ctrl + _` | Go to a specific line               |
+| `Alt + U`  | Undo                                |
+| `Alt + E`  | Redo                                |
+| `Alt + A`  | Start/stop text selection           |
+| `Alt + 6`  | Copy the current line/selected text |
+
+> **Remember:** In Nano, `^` means **Ctrl** and `M-` generally means **Alt**.
+
+---
+
+### 4. Saving & Exiting Nano
+
+A common workflow is:
+
+#### Step 1 - Open the file
+
+```bash
+nano myfile
+```
+
+### Step 2 - Write your content
+
+```bash
+Hello TryHackMe
+I can write things into "myfile"
+```
+
+### Step 3 - Save
+
+Press:
+
+```bash
+Ctrl + O
+```
+
+Nano will ask for the filename.
+
+Press **Enter** to confirm.
+
+### Step 4 - Exit
+
+Press:
+
+```bash
+Ctrl + X
+```
+
+---
+
+### 5. Useful Nano Features
+
+Nano provides the basic functionality needed for everyday terminal editing:
+
+| Feature     | Shortcut   |
+| ----------- | ---------- |
+| Search text | `Ctrl + W` |
+| Save file   | `Ctrl + O` |
+| Exit editor | `Ctrl + X` |
+| Cut line    | `Ctrl + K` |
+| Paste       | `Ctrl + U` |
+| Go to line  | `Ctrl + _` |
+| Undo        | `Alt + U`  |
+| Redo        | `Alt + E`  |
+| Copy        | `Alt + 6`  |
+
+---
+
+### 6. VIM
+
+`VIM` is a powerful and highly customizable terminal text editor.
+
+It is more complex than Nano and has a steeper learning curve, but it provides many advanced features.
+
+#### Open a File
+
+```bash
+vim filename
+```
+
+For example:
+
+```bash
+vim myfile
+```
+
+---
+
+### 7. Why Learn VIM?
+
+Some advantages of VIM include:
+
+| Feature               | Description                                                 |
+| --------------------- | ----------------------------------------------------------- |
+| Customizable          | Keyboard shortcuts and behavior can be customized           |
+| Syntax Highlighting   | Useful when writing and maintaining source code             |
+| Powerful Editing      | Provides advanced navigation and editing capabilities       |
+| Terminal Availability | Vim/vi is available on many Linux and Unix-like systems     |
+| Extensive Resources   | There are many tutorials, cheatsheets, and guides available |
+
+> **Note:** You don't need to memorize every VIM feature immediately. Start with basic navigation, editing, saving, and exiting.
+
+---
+
+### 8. VIM Basic Modes
+
+One of the most important concepts in VIM is that it uses different **modes**.
+
+| Mode              | Purpose                                   |
+| ----------------- | ----------------------------------------- |
+| Normal mode       | Navigate and perform commands             |
+| Insert mode       | Type and edit text                        |
+| Command-line mode | Enter commands such as saving or quitting |
+
+#### Enter Insert Mode
+
+From Normal mode, press:
+
+```bash
+i
+```
+
+You can now type text.
+
+#### Return to Normal Mode
+
+Press:
+
+```bash
+Esc
+```
+
+#### Save
+
+From Normal mode:
+
+```bash
+:w
+```
+
+### Quit
+
+```bash
+:q
+```
+
+### Save and Quit
+
+```bash
+:wq
+```
+
+### Quit Without Saving
+
+```bash
+:q!
+```
+
+> **Tip:** When you're unsure which mode you're in, press `Esc` to return to Normal mode.
+
+---
+
+### 9. Nano vs VIM
+
+| Feature                      | Nano      | VIM  |
+| ---------------------------- | --------- | ---- |
+| Beginner friendly            | ✅          ❌   |
+| Easy to remember             | ✅        | ❌   |
+| Advanced editing             | Limited   | ✅   |
+| Syntax highlighting          | Available | ✅   |
+| Highly customizable          | Limited   | ✅   |
+| Simple configuration editing | ✅        | ✅   |
+| Steep learning curve         | Low       | High |
+
+#### Recommendation
+
+For beginners:
+
+```bash
+nano filename
+```
+
+is usually the easiest choice.
+
+As you become more comfortable with Linux, learning VIM can significantly improve your command-line editing skills.
+
+---
+
+### 10. Downloading Files with `wget`
+
+`wget` is a command-line utility used to download files from the web.
+
+It commonly retrieves files over HTTP or HTTPS.
+
+#### Basic Syntax
+
+```bash
+wget <URL>
+```
+
+#### Example
+
+```bash
+wget https://example.com/myfile.txt
+```
+
+This downloads `myfile.txt` into the current directory.
+
+#### Check Where You Are First
+
+```bash
+pwd
+```
+
+Then download:
+
+```bash
+wget https://example.com/myfile.txt
+```
+
+The file will normally be saved in the current working directory.
+
+---
+
+### 11. Common `wget` Workflow
+
+```bash
+# Check current directory
+pwd
+
+# List existing files
+ls
+
+# Download a file
+wget https://example.com/file.txt
+
+# Confirm that it was downloaded
+ls
+```
+
+#### Useful Options
+
+| Option   | Purpose                                     | Example                  |
+| -------- | ------------------------------------------- | ------------------------ |
+| `-O`     | Save the download using a specific filename | `wget -O output.txt URL` |
+| `-q`     | Quiet mode                                  | `wget -q URL`            |
+| `-c`     | Continue a partially downloaded file        | `wget -c URL`            |
+| `--help` | Show available options                      | `wget --help`            |
+
+> **Tip:** Use `man wget` to see the complete documentation.
+
+---
+
+### 12. SCP - Secure Copy
+
+`scp` stands for **Secure Copy**.
+
+It allows files and directories to be transferred between computers using SSH.
+
+Unlike the local `cp` command, which copies files on the same system, `scp` can transfer files between a local machine and a remote machine.
+
+SCP provides:
+
+- SSH-based authentication
+- Encrypted transfer
+- Local &rarr; remote transfers
+- Remote &rarr; local transfers
+
+---
+
+### 13. SCP - Local to Remote
+
+The general format is:
+
+```bash
+scp <SOURCE> <DESTINATION>
+```
+
+For example:
+
+```bash
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+```
+
+#### Breakdown
+
+```bash
+important.txt
+```
+
+The local file being copied.
+
+```bash
+ubuntu@192.168.1.30
+```
+
+The remote username and IP address.
+
+```bash
+/home/ubuntu/transferred.txt
+```
+
+The destination path and filename on the remote machine.
+
+#### Direction
+
+```bash
+LOCAL MACHINE
+     |
+     | scp
+     v
+REMOTE MACHINE
+```
+
+---
+
+### 14. SCP - Remote to Local
+
+You can reverse the source and destination:
+
+```bash
+scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt
+```
+
+This means:
+
+```bash
+REMOTE MACHINE
+     |
+     | scp
+     v
+LOCAL MACHINE
+```
+
+The remote file:
+
+```bash
+/home/ubuntu/documents.txt
+```
+
+is downloaded and saved locally as:
+
+```bash
+notes.txt
+```
+
+---
+
+### 15. SCP Variables
+
+#### Local &rarr; Remote
+
+| Variable           | Example                        |
+| ------------------ | ------------------------------ |
+| Remote IP          | `192.168.1.30`                 |
+| Remote user        | `ubuntu`                       |
+| Local file         | `important.txt`                |
+| Remote destination | `/home/ubuntu/transferred.txt` |
+
+Command:
+
+```bash
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+```
+
+#### Remote &rarr; Local
+
+| Variable       | Example                      |
+| -------------- | ---------------------------- |
+| Remote IP      | `192.168.1.30`               |
+| Remote user    | `ubuntu`                     |
+| Remote file    | `/home/ubuntu/documents.txt` |
+| Local filename | `notes.txt`                  |
+
+Command:
+
+```bash
+scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt
+```
+
+---
+
+### 16. SCP - Copying Directories
+
+To recursively copy a directory, use `-r`:
+
+```bash
+scp -r myfolder ubuntu@192.168.1.30:/home/ubuntu/
+```
+
+The `-r` option tells SCP to copy the directory and its contents recursively.
+
+> **Tip:** Always verify the destination path and permissions before transferring important files.
+
+---
+
+### 17. Python HTTP Server
+
+Python 3 includes a lightweight HTTP server that can be used to serve files from a directory.
+
+This is useful when you want another computer to download files from your machine using HTTP.
+
+#### Start the Server
+
+First, move into the directory containing the files:
+
+```bash
+cd /webserver
+```
+
+Then run:
+
+```bash
+python3 -m http.server
+```
+
+By default, the server listens on port `8000`.
+
+Example:
+
+```bash
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+```
+
+---
+
+### 18. How Python HTTP Server Works
+
+The server exposes files from the directory where you started it.
+
+For example:
+
+```bash
+/webserver
+├── file
+├── document.txt
+└── script.sh
+```
+
+Run:
+
+```bash
+cd /webserver
+python3 -m http.server
+```
+
+The files can then be requested through:
+
+```bash
+http://<server-ip>:8000/<filename>
+```
+
+For example:
+
+```bash
+http://192.168.1.30:8000/file
+```
+
+---
+
+### 19. Downloading from the Python Server
+
+Keep the Python server running in one terminal.
+
+Open a **second terminal** and use `wget`.
+
+For example:
+
+```bash
+wget http://192.168.1.30:8000/file
+```
+
+The workflow looks like:
+
+```bash
+Terminal 1
+    |
+    | python3 -m http.server
+    |
+    v
+HTTP Server
+    ^
+    |
+    | HTTP download
+    |
+Terminal 2
+    |
+    | wget http://192.168.1.30:8000/file
+```
+
+> **Important:** The Python HTTP server occupies the terminal while it is running. Open another terminal for commands such as `wget`.
+
+---
+
+# 20. Changing the HTTP Server Port
+
+The default port is `8000`.
+
+You can specify another port:
+
+```bash
+python3 -m http.server 9000
+```
+
+The server will then listen on port `9000`.
+
+A client would download a file using:
+
+```bash
+wget http://192.168.1.30:9000/file
+```
+
+---
+
+### 21. Python HTTP Server - Useful Options
+
+You can view the available options with:
+
+```bash
+python3 -m http.server --help
+```
+
+Commonly useful options include:
+
+| Option               | Purpose                                         |
+| -------------------- | ----------------------------------------------- |
+| No option            | Serve the current directory on port `8000`      |
+| `<port>`             | Use a specific port                             |
+| `--directory <path>` | Serve files from a specific directory           |
+| `--bind <address>`   | Bind the server to a specific address/interface |
+
+Example:
+
+```bash
+python3 -m http.server 8000 --directory /tmp
+```
+
+---
+
+### 22. `wget` + Python HTTP Server
+
+#### Server
+
+On the machine containing the file:
+
+```bash
+cd /webserver
+python3 -m http.server 8000
+```
+
+#### Client
+
+On another machine:
+
+```bash
+wget http://192.168.1.30:8000/file
+```
+
+#### Result
+
+The client downloads:
+
+```bash
+file
+```
+
+from the server's `/webserver` directory.
+
+---
+
+### 23. File Transfer Methods Compared
+
+| Method             | Direction           | Protocol / Mechanism | Main Use                                |
+| ------------------ | ------------------- | -------------------- | --------------------------------------- |
+| `cp`               | Local &rarr; Local  | Filesystem           | Copy files on the same machine          |
+| `mv`               | Local &rarr; Local  | Filesystem           | Move or rename files                    |
+| `wget`             | Remote &rarr; Local | HTTP/HTTPS           | Download files from a web server        |
+| `scp`              | Local ↔ Remote      | SSH                  | Securely transfer files between systems |
+| Python HTTP Server | Local &rarr; Remote | HTTP                 | Quickly serve files for download        |
+
+---
+
+### 24. Quick Reference
+
+#### Text Editing
+
+| Command / Shortcut | Purpose                      |
+| ------------------ | ---------------------------- |
+| `nano file`        | Open/create a file with Nano |
+| `Ctrl + O`         | Save in Nano                 |
+| `Ctrl + X`         | Exit Nano                    |
+| `Ctrl + W`         | Search in Nano.              |
+| `vim file`         | Open/create a file with VIM  |
+| `i`                | Enter Insert mode in VIM     |
+| `Esc`              | Return to Normal mode in VIM |
+| `:w`               | Save in VIM                  |
+| `:q`               | Quit VIM                     |
+| `:wq`              | Save and quit VIM            |
+| `:q!`              | Quit without saving          |
+
+#### File Transfer
+
+| Command                             | Purpose                                     |
+| ----------------------------------- | ------------------------------------------- |
+| `wget URL`                          | Download a file over HTTP/HTTPS             |
+| `scp file user@host:/path/`         | Copy a local file to a remote system        |
+| `scp user@host:/path/file .`        | Copy a remote file to the current directory |
+| `scp -r directory user@host:/path/` | Recursively copy a directory                |
+| `python3 -m http.server`            | Start an HTTP server on port `8000`         |
+| `python3 -m http.server 9000`       | Start an HTTP server on port `9000`         |
+
+---
+
+### 25. Common Workflows
+
+#### Edit a File with Nano
+
+```bash
+nano notes.txt
+```
+
+Then:
+
+```bash
+Ctrl + O  → Save
+Ctrl + X  → Exit
+```
+
+---
+
+#### Download a File
+
+```bash
+wget https://example.com/file.txt
+```
+
+Then verify:
+
+```bash
+ls
+```
+
+---
+
+#### Transfer a File to a Remote Machine
+
+```bash
+scp file.txt user@192.168.1.30:/home/user/
+```
+
+---
+
+#### Download a File from a Remote Machine
+
+```bash
+scp user@192.168.1.30:/home/user/file.txt .
+```
+
+The `.` means the **current directory**.
+
+---
+
+#### Serve Files with Python
+
+On the machine containing the files:
+
+```bash
+cd /webserver
+python3 -m http.server 8000
+```
+
+On the receiving machine:
+
+```bash
+wget http://192.168.1.30:8000/file
+```
+
+---
+
+### 26. Key Concepts to Remember
+
+#### Nano
+
+Simple terminal editor:
+
+```bash
+nano filename
+```
+
+Best starting point for beginners.
+
+#### VIM
+
+Powerful terminal editor with modes:
+
+```bash
+Normal → Insert → Normal
+```
+
+Save and quit:
+
+```bash
+:wq
+```
+
+#### Wget
+
+Downloads files over HTTP/HTTPS:
+
+```bash
+wget URL
+```
+
+#### SCP
+
+Securely transfers files using SSH:
+
+```bash
+scp SOURCE DESTINATION
+```
+
+#### Python HTTP Server
+
+Quickly serves files from a directory:
+
+```bash
+python3 -m http.server 8000
+```
+
+### The Big Picture
+
+```bash
+EDIT
+  |
+  +--> nano
+  |
+  +--> vim
+
+TRANSFER
+  |
+  +--> wget       → Download over HTTP/HTTPS
+  |
+  +--> scp        → Transfer over SSH
+  |
+  +--> HTTPServer → Serve files over HTTP
 ```
